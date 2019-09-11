@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BrunoSXS</title>
-    <link>https://brunosxs.com/</link>
-    <description>Recent content on BrunoSXS</description>
+    <title>gamedev on BrunoSXS</title>
+    <link>https://brunosxs.com/tags/gamedev/</link>
+    <description>Recent content in gamedev on BrunoSXS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate>
     
-	<atom:link href="https://brunosxs.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brunosxs.com/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,18 +20,6 @@
       <guid>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</guid>
       <description>SMRT-Godot is a plugin I made to create dialogs for my game (which has still to come to life), over the course of almost two years now, I&amp;rsquo;ve been supporting it with fixes and features.
 Well, Godot community has grown a lot over the time I&amp;rsquo;ve been working on this little plugin, and I am happy to say that there are a lot of capable users that can do and will do their own sollutions, be it based in past works like mine, other friends&amp;rsquo; or even build something from scratch (which is really cool, you learn a lot).</description>
-    </item>
-    
-    <item>
-      <title>Using SMRT-Godot - The dialog system with a fancy name</title>
-      <link>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</link>
-      <pubDate>Tue, 06 Jun 2017 12:54:00 -0700</pubDate>
-      
-      <guid>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</guid>
-      <description>This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
-In here I&amp;rsquo;ll show a simple project to highlight some of the features of SMRT.
-Our basic scene
- You can find this project in SMRT&amp;rsquo;s examples folder at the project&amp;rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&amp;hellip;</description>
     </item>
     
     <item>
@@ -67,19 +55,6 @@ save_slot
       <guid>https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/</guid>
       <description>Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
 There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist.</description>
-    </item>
-    
-    <item>
-      <title>Update to SMRT-Godot</title>
-      <link>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</link>
-      <pubDate>Fri, 27 Jan 2017 02:47:00 -0800</pubDate>
-      
-      <guid>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</guid>
-      <description>Just updated SMRT-Godot with some bugfixes and changes after some months compiling feedback.
-What is SMRT-Godot?
-It is a dialog system for your games, written as a plugin for godot that enables you to create classic dialog boxes with a lot of personalization.
-See it in action:
-I have just sent this new version to godot&amp;rsquo;s assetlib, so it is probably not updated there, but on the repo you can find the latest version and some examples.</description>
     </item>
     
     <item>

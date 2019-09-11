@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Using SMRT-Godot - The dialog system with a fancy name">
+<meta itemprop="description" content="This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
+In here I&rsquo;ll show a simple project to highlight some of the features of SMRT.
+Our basic scene
+ You can find this project in SMRT&rsquo;s examples folder at the project&rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&hellip;">
+
+
+<meta itemprop="datePublished" content="2017-06-06T12:54:00-07:00" />
+<meta itemprop="dateModified" content="2017-06-06T12:54:00-07:00" />
+<meta itemprop="wordCount" content="1750">
+
+
+
+<meta itemprop="keywords" content="programming SMRT,plugin,godot," />
+<meta property="og:title" content="Using SMRT-Godot - The dialog system with a fancy name" />
+<meta property="og:description" content="This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
+In here I&rsquo;ll show a simple project to highlight some of the features of SMRT.
+Our basic scene
+ You can find this project in SMRT&rsquo;s examples folder at the project&rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/" />
+<meta property="article:published_time" content="2017-06-06T12:54:00-07:00" />
+<meta property="article:modified_time" content="2017-06-06T12:54:00-07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using SMRT-Godot - The dialog system with a fancy name"/>
+<meta name="twitter:description" content="This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
+In here I&rsquo;ll show a simple project to highlight some of the features of SMRT.
+Our basic scene
+ You can find this project in SMRT&rsquo;s examples folder at the project&rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&hellip;"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Using SMRT-Godot - The dialog system with a fancy name</title>
+	<link rel="stylesheet" href="https://brunosxs.com/css/style.min.5ee5e7976cd09872c64e40a582206543f6aa38c69a8c43898aadc70040344b92.css" integrity="sha256-XuXnl2zQmHLGTkClgiBlQ/aqOMaajEOJiq3HAEA0S5I=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://brunosxs.com">BrunoSXS</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://brunosxs.com/posts/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/brunosxs" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/brunosxs" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://brunosxs.com/posts/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jun 6, 2017</span></div>
+				<h1>Using SMRT-Godot - The dialog system with a fancy name</h1>
+			</header>
+			<div class="content">
+				
+
+<p>This post is long due, but I found some motivation after talking to
+Nathan(from GDQuest, featured in my <a href="http://www.brunosxs.com/2016/11/list-of-game-dev-resources.html">list of gamedev
+resources</a>).<br />
+In here I&rsquo;ll show a simple project to highlight some of the features of
+SMRT.</p>
+
+<p><img src="../images/20170606_using_smrt.png" alt="SMRT GODOT" />
+Our basic scene</p>
+
+<blockquote>
+<p>You can find this project in SMRT&rsquo;s examples folder at the project&rsquo;s
+<a href="https://github.com/brunosxs/SMRT-Godot/tree/master/examples/cave">github
+repository</a>,
+download it and follow along.  </p>
+</blockquote>
+
+<p>Play the scene and interact with the characters before proceeding&hellip;</p>
+
+<p>Done?<br />
+Let&rsquo;s just go over the basic concept of SMRT: chapters, dialogs and
+texts<br />
+<strong>Texts</strong> are a single dialog box worth of text<br />
+<strong>Dialogs</strong> are a collection of <strong>texts,</strong> they are referenced through
+an unique name.<br />
+<strong>Chapters</strong> are a collection of <strong>dialogs</strong>. They represent the same
+concept of chapters in a book: A new point in the story. So they can say
+different things, while keeping the same dialog names with just a change
+in chapter<br />
+We will focus basically on the code for the following:</p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png" /></a></td>
+</tr>
+<tr class="even">
+<td>This is the final scene tree</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>World:</strong> It will be very simple, just setting the initial
+conditions for the rest of the scene through the use of Globals</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>Transition:</strong> A simple transition that will be played at a
+specific time later on.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>Player&rsquo;s avatar:</strong> With simple 8 directions movement.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>NPC node:</strong> That can detect if the player entered its interactive
+area and say things. to the player. </li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>A trigger:</strong> Basically an instance of the npc node with no sprite.
+It will be initially blocked by an NPC. When the player enters its
+area, a cutscene will play, and at the end of this cutscene, the
+chapter will change.</li>
+</ul>
+
+<p>For SMRT to work properly, it should be a child of a <strong>CanvasLayer</strong>.
+SMRT also needs a language file, it is a JSON that has info on how it
+should display messages.</p>
+
+<p>I created an editor for this process, access it by clicking on the
+following button:</p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png" alt="" /></a></p>
+
+<p>Use the load button and navigate to <em>res://examples/cave</em> to
+load <em>another_example.lan</em><br />
+<a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png" alt="" /></a></p>
+
+<p>Click in a chapter to display all available dialogs in the dialog&rsquo;s
+viewer, then click in one of the texts to edit its properties. For
+actions, you can add, duplicate, edit and delete chapters and dialogs
+while you can add, duplicate, delete and change the order of the texts
+with the arrows bellow the text field.</p>
+
+<p>Careful! There is no confirmation for deleting anything. So if you do
+something you didn&rsquo;t meant to, providing you haven&rsquo;t saved it yet, just
+load the file again.</p>
+
+<p><strong>The transition</strong></p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif" alt="" /></a></p>
+
+<h4 id="it-s-setup">It&rsquo;s setup:<a href="#it-s-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png" alt="" /></a></p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png" alt="" /></a></p>
+
+<p>It is a texture of 64x64 pixels that covers the entire viewport, with
+two keyframes for opacity: It starts at 0 and ends at 1.</p>
+
+<h4 id="the-world">The world<a href="#the-world" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png" alt="" /></a></p>
+
+<p>The most important line is the forth one. On it, we create a global
+variable called &lsquo;chapter&rsquo; with the value &lsquo;intro&rsquo;. </p>
+
+<p>In the script for the npcs this value will be used and changed as
+desired.</p>
+
+<p>Lines 5 and 6 are basically SMRT and a fade transition node
+respectively.</p>
+
+<h2 id="the-player">The player<a href="#the-player" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png" alt="" /></a></p>
+
+<p>Just simple movement, our player class will be passive, it will not have
+the methods to interact with objects by itself, this will be the work of
+the NPC node.</p>
+
+<p>Take note of line 7: This is how we will identify what character is the
+player for our NPCs.</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="k">extends</span> <span class="ne">KinematicBody2D</span>
+
+<span class="k">var</span> <span class="n">walk_speed</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">var</span> <span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">func</span> <span class="n">_ready</span><span class="p">():</span>
+	<span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+	<span class="ne">Globals</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> <span class="c1"># We make the player accessible more easily through Globals.</span>
+
+<span class="k">func</span> <span class="n">_fixed_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+	<span class="c1"># Simple movement for our char</span>
+	<span class="k">if</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_up&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_down&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_left&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_right&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>	
+	<span class="n">move</span><span class="p">(</span><span class="n">direction</span><span class="o">*</span><span class="n">walk_speed</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="the-npc">The NPC<a href="#the-npc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png" alt="" /></a></p>
+
+<p>It is a duplicate of the player char  with an Area2D for the interactive
+area.</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="k">extends</span> <span class="ne">KinematicBody2D</span>
+
+
+<span class="k">var</span> <span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">export</span> <span class="k">var</span> <span class="n">dialog_name</span> <span class="o">=</span> <span class="s2">&#34;FRIEND_TALK&#34;</span>
+<span class="k">export</span> <span class="k">var</span> <span class="n">start_at_message</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="n">can_interact</span> <span class="o">=</span> <span class="bp">true</span>
+
+<span class="k">func</span> <span class="n">_ready</span><span class="p">():</span>
+	<span class="n">get_node</span><span class="p">(</span><span class="s2">&#34;interactive_area&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;body_enter&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&#34;on_body_enter&#34;</span><span class="p">)</span>
+	<span class="k">pass</span>
+
+
+<span class="k">func</span> <span class="n">on_body_enter</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">body</span> <span class="o">==</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">):</span> <span class="c1"># Check if the character that entered is the player</span>
+		<span class="k">if</span> <span class="n">dialog_name</span> <span class="o">!=</span> <span class="n">null</span> <span class="ow">or</span> <span class="n">dialog_name</span> <span class="o">!=</span> <span class="s2">&#34;&#34;</span> <span class="ow">and</span> <span class="n">can_interact</span><span class="p">:</span> <span class="c1"># check if the npc has something to say and we can interact with</span>
+			<span class="n">can_interact</span> <span class="o">=</span> <span class="bp">false</span> <span class="c1"># make the npc non-interactive during the talk</span>
+			<span class="c1"># using some variables to shorten the burden of writing</span>
+			<span class="k">var</span> <span class="n">smrt</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;dialog&#34;</span><span class="p">)</span>
+			<span class="k">var</span> <span class="n">chapter</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;chapter&#34;</span><span class="p">)</span>
+			<span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">false</span><span class="p">)</span> <span class="c1"># We disable the player while the dialog happen</span>
+			<span class="n">smrt</span><span class="o">.</span><span class="n">show_text</span><span class="p">(</span><span class="n">chapter</span><span class="p">,</span> <span class="n">dialog_name</span><span class="p">,</span> <span class="n">start_at_message</span><span class="p">)</span> <span class="c1"># Start the dialog</span>
+			<span class="c1"># we can connect to the signal &#39;dialog_control&#39; and do different things based on the current state of the dialog</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">smrt</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">):</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">)</span>
+			
+			<span class="nb">yield</span><span class="p">(</span><span class="n">smrt</span><span class="p">,</span><span class="s2">&#34;finished&#34;</span><span class="p">)</span> <span class="c1"># wait for smrt to emit the finished signal so we can continue</span>
+			<span class="n">can_interact</span> <span class="o">=</span> <span class="bp">true</span> <span class="c1"># re-enable the npc interactiveness</span>
+			<span class="n">smrt</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">)</span>
+			<span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span> <span class="c1"># And finally, re-enable the player</span>
+			
+
+<span class="k">func</span> <span class="n">on_dialog</span><span class="p">(</span><span class="n">info</span><span class="p">):</span>
+<span class="c1">#	info is a dictionary that sends the following:</span>
+<span class="c1">#	answer: if a question was answered, it will give the index of the button selected, otherwise it is null</span>
+<span class="c1">#	chapter: the chapter currently active</span>
+<span class="c1">#	dialog: the dialog currently active</span>
+<span class="c1">#	last_text_index: the index of the last text that was displayed</span>
+<span class="c1">#	total_text: the number of texts in the currently active dialog</span>
+	
+	<span class="k">var</span> <span class="n">smrt</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;dialog&#34;</span><span class="p">)</span> <span class="c1"># Let&#39;s grab the dialog system into a 4 letter var</span>
+	
+	<span class="c1"># Check for an answer:</span>
+	<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">chapter</span> <span class="o">==</span> <span class="s2">&#34;intro&#34;</span><span class="p">:</span> <span class="c1"># it is good practice to also check what chapter and...</span>
+		<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">dialog</span> <span class="o">==</span> <span class="s2">&#34;friend_talk&#34;</span><span class="p">:</span> <span class="c1"># the dialog we&#39;re in</span>
+			<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">answer</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># There is only one question on this dialog, we check if the player answered &#34;Of course, I am fearless!&#34;</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># We kindly ask SMRT to stop</span>
+				<span class="nb">yield</span><span class="p">(</span><span class="n">get_tree</span><span class="p">(),</span><span class="s2">&#34;idle_frame&#34;</span><span class="p">)</span> <span class="c1"># and wait one frame for it to patch things up and quit nicelly</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">show_text</span><span class="p">(</span><span class="s2">&#34;intro&#34;</span><span class="p">,</span><span class="s2">&#34;friend_talk_positive&#34;</span><span class="p">)</span> <span class="c1"># to finally follow it with a new dialog</span>
+				<span class="k">if</span> <span class="n">test_move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">)):</span> <span class="c1"># We will make the npc go out of the path</span>
+					<span class="n">move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="n">move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;changed dialog name from &#34;</span><span class="p">,</span> <span class="n">get_name</span><span class="p">())</span>
+				<span class="n">dialog_name</span> <span class="o">=</span> <span class="s2">&#34;friend_talk_positive&#34;</span> <span class="c1"># We also change the dialog the npc will talk from now on so when the player interact with it from now on, it will show a new answer.</span>
+		<span class="k">elif</span> <span class="n">info</span><span class="o">.</span><span class="n">dialog</span> <span class="o">==</span> <span class="s2">&#34;great_adventure&#34;</span><span class="p">:</span>
+			<span class="k">var</span> <span class="n">transition</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;transition&#34;</span><span class="p">)</span> <span class="c1"># Grab the transition node</span>
+			<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">last_text_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># When the first text finishes</span>
+				<span class="n">transition</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="s2">&#34;fade&#34;</span><span class="p">)</span> <span class="c1"># we play a fade-to-black animation</span>
+			<span class="k">elif</span> <span class="n">info</span><span class="o">.</span><span class="n">last_text_index</span> <span class="o">==</span> <span class="n">info</span><span class="o">.</span><span class="n">total_text</span><span class="p">:</span> <span class="c1"># when the last dialog has finished</span>
+				<span class="n">transition</span><span class="o">.</span><span class="n">play_backwards</span><span class="p">(</span><span class="s2">&#34;fade&#34;</span><span class="p">)</span>  <span class="c1"># we play the same animation, backwards</span>
+				<span class="ne">Globals</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&#34;chapter&#34;</span><span class="p">,</span><span class="s2">&#34;after_going_there&#34;</span><span class="p">)</span> <span class="c1"># change the chapter</span>
+				<span class="nb">yield</span><span class="p">(</span><span class="n">transition</span><span class="p">,</span><span class="s2">&#34;finished&#34;</span><span class="p">)</span> <span class="c1"># wait for the transition to end</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<p>The variables from line 5 through 7 will dictate what the character will
+say, based on the language file loaded in SMRT. Exporting them, allow
+each instance to have its own string. The NPC will be responsible to see
+if the player entered its interactive area, for that, we need to connect
+the area2D to the npc.</p>
+
+<p>Doing it with the editor for one or two npcs is fine, but it is better
+to do it through code, this way we don&rsquo;t need to keep connecting areas
+to new npcs, This is done at _ready() in line 10. </p>
+
+<p>We connect the interactive_area to the function &ldquo;on_body_enter&rdquo;
+inside the npc itself. This function first checks if the body that
+entered is the player, then see if the npc has something to say (the
+dialog_name is not empty nor null) and if it can interact.</p>
+
+<p>If those conditions are met, we make <em>can_interact</em> <em>false</em> so we don&rsquo;t
+fire the event again until the dialog finishes, grab SMRT and the
+chapter in small variables(lines 19 and 20), stop the process of the
+player so he won&rsquo;t be able to move while the dialog happens (line 21)
+and finally call *show_text(chapter, dialog_name, start_at).* </p>
+
+<p>With this, we have a basic interaction between player and npc. We can
+pretty much make them say whatever we want. But the example is far from
+over&hellip;</p>
+
+<p>The npc that is blocking the exit will ask a question and make things
+happen based on it.  This happens thanks to the signal
+&ldquo;dialog_control&rdquo;. It can give us important info like the answer a
+player gave in a question.</p>
+
+<p>At line 24, we check if the signal <em>dialog_control</em> is already
+connected. If it isn&rsquo;t, we connect it to the npc&rsquo;s function
+<em>on_dialog. </em></p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png" /></a></td>
+</tr>
+<tr class="even">
+<td>friend_talk is the first npc's dialog,<br />
+the one blocking the exit of the cave</td>
+</tr>
+</tbody>
+</table>
+
+<p>Then, through lines 44 and 45 we check if we&rsquo;re in the &ldquo;intro&rdquo; chapter
+and if the dialog playing is &ldquo;friend_talk&rdquo;, checking for the answer
+index sent by SMRT. So we check for the first option to be clicked and
+make the npc move out of the way. We also change the dialog the char
+will say from now on to <em>friend_talk_positive</em>.</p>
+
+<p>It may seem  obvious, but you should handle what the answers will do. If
+you don&rsquo;t code anything, SMRT will simply continue the dialog until the
+end, regardless of the answer selected. This is also why we don&rsquo;t check
+for the negative option, as the dialog will simply continue to it.</p>
+
+<h3 id="the-trigger">The Trigger<a href="#the-trigger" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>The trigger is a duplicate of the npc. It behaves exactly like one with
+the exception that it doesn&rsquo;t have a sprite set. Its dialog is set to
+&ldquo;<em>great_adventure</em>&rdquo;.</p>
+
+<p>This is also handled inside the npc&rsquo;s script. from line 56 to line 63.</p>
+
+<p>When the very first message of <em>great_adventure</em> finishes, the screen
+will fade to black while the dialog continues. At the end of it, we
+change the chapter global to &ldquo;*after_going_there&rdquo;* and life goes on.</p>
+
+<h2 id="the-second-npc">The second NPC<a href="#the-second-npc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png" alt="" /></a></p>
+
+<p>This one just illustrates the usefulness of the chapter &gt; dialog
+paradigm.  This npc will start the dialog &ldquo;*that_guy_talk&rdquo;.* In the
+language file, there exists two versions of &ldquo;that_guy_talk&rdquo;, each in
+the two different chapters.</p>
+
+<p>This is all you need to do to make the same chars say different things
+based on moments of the game. </p>
+
+<h2 id="final-thoughts">Final thoughts<a href="#final-thoughts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>This can give you a pretty good foundation to work with SMRT in your
+projects.</p>
+
+<p>I hope this helps you work on your game. I learned a lot thanks to
+people writing articles, sharing knowledgement and directly helping me
+in my doubts. In a way, it is me continuing the cycle.</p>
+
+			</div>
+
+<div class="related-posts thin">
+	<h2>See Also</h2>
+	<ul>
+	
+	<li><a href="/posts/2017-01-27-update-to-smrt-godot/">Update to SMRT-Godot</a></li>
+	
+	<li><a href="/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/">Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling</a></li>
+	
+	<li><a href="/posts/2017-02-18-signals-in-godot/">Signals in godot</a></li>
+	
+	<li><a href="/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/">Godot Engine Quick Tips - 01: create_timer() helper for yielding a script</a></li>
+	
+	<li><a href="/posts/2016-09-25-list-of-game-dev-resources/">List of game dev resources</a></li>
+	
+	</ul>
+</div>
+
+			<hr class="post-end">
+			<footer class="post-info">
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>Bruno SXS Alves</p>
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://brunosxs.com/tags/programming-smrt">programming SMRT</a></span><span class="tag"><a href="https://brunosxs.com/tags/plugin">plugin</a></span><span class="tag"><a href="https://brunosxs.com/tags/godot">godot</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1750 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-06-06 16:54 -0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>SMRT-Godot Legacy and the future of SMRT</span>
+			</a>
+			<a class="prev-post" href="https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2019 <a href="https://brunosxs.com">BrunoSXS</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://brunosxs.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://brunosxs.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-19939128-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

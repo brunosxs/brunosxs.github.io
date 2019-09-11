@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html5 on BrunoSXS</title>
+    <link>https://brunosxs.com/tags/html5/</link>
+    <description>Recent content in html5 on BrunoSXS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 12 Nov 2016 11:51:00 -0800</lastBuildDate>
+    
+	<atom:link href="https://brunosxs.com/tags/html5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A game with code and graphics under 48kb</title>
+      <link>https://brunosxs.com/posts/2016-11-12-a-game-with-code-and-graphics-under-48kb/</link>
+      <pubDate>Sat, 12 Nov 2016 11:51:00 -0800</pubDate>
+      
+      <guid>https://brunosxs.com/posts/2016-11-12-a-game-with-code-and-graphics-under-48kb/</guid>
+      <description>I recently bought a little program that emulates a &amp;ldquo;console/computer&amp;rdquo;, but this computer never existed to begin with.
+It is called PICO8 and its main selling point is that you have to make a game under heavy constrains. For an example, it has only 16 colors, a sequencer to compose music and a very simple audio synth that makes me remember the old commodore 64.
+I&amp;rsquo;ve made some little code and tests on it, and it sparkled my desire to try something like that in javascript.</description>
+    </item>
+    
+  </channel>
+</rss>

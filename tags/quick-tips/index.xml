@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>quick tips on BrunoSXS</title>
+    <link>https://brunosxs.com/tags/quick-tips/</link>
+    <description>Recent content in quick tips on BrunoSXS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 21 May 2017 08:37:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://brunosxs.com/tags/quick-tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling</title>
+      <link>https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/</link>
+      <pubDate>Sun, 21 May 2017 08:37:00 -0700</pubDate>
+      
+      <guid>https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/</guid>
+      <description>Now I share with you guys how I handle save files in games. It is a pretty simple script that&amp;hellip; well, works.
+Godot also has a ConfigFile class that can be used for it, but I preffer to work with dictionaries because my code ends simpler.
+With basically 3 variables
+default_save
+current_save_game
+save_slot
+*
+*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game.</description>
+    </item>
+    
+    <item>
+      <title>Godot Engine Quick Tips - 01: create_timer() helper for yielding a script</title>
+      <link>https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/</link>
+      <pubDate>Tue, 14 Feb 2017 05:40:00 -0800</pubDate>
+      
+      <guid>https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/</guid>
+      <description>Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
+There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist.</description>
+    </item>
+    
+  </channel>
+</rss>

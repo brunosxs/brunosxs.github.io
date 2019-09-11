@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>plugin on BrunoSXS</title>
+    <link>https://brunosxs.com/tags/plugin/</link>
+    <description>Recent content in plugin on BrunoSXS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 06 Jun 2017 12:54:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://brunosxs.com/tags/plugin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using SMRT-Godot - The dialog system with a fancy name</title>
+      <link>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</link>
+      <pubDate>Tue, 06 Jun 2017 12:54:00 -0700</pubDate>
+      
+      <guid>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</guid>
+      <description>This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
+In here I&amp;rsquo;ll show a simple project to highlight some of the features of SMRT.
+Our basic scene
+ You can find this project in SMRT&amp;rsquo;s examples folder at the project&amp;rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Update to SMRT-Godot</title>
+      <link>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</link>
+      <pubDate>Fri, 27 Jan 2017 02:47:00 -0800</pubDate>
+      
+      <guid>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</guid>
+      <description>Just updated SMRT-Godot with some bugfixes and changes after some months compiling feedback.
+What is SMRT-Godot?
+It is a dialog system for your games, written as a plugin for godot that enables you to create classic dialog boxes with a lot of personalization.
+See it in action:
+I have just sent this new version to godot&amp;rsquo;s assetlib, so it is probably not updated there, but on the repo you can find the latest version and some examples.</description>
+    </item>
+    
+  </channel>
+</rss>

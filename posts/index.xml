@@ -6,7 +6,940 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+		<lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate>
 		<atom:link href="https://brunosxs.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>SMRT-Godot Legacy and the future of SMRT</title>
+			<link>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</link>
+			<pubDate>Wed, 27 Jun 2018 15:53:00 -0700</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</guid>
+			<description>SMRT-Godot is a plugin I made to create dialogs for my game (which has still to come to life), over the course of almost two years now, I&amp;rsquo;ve been supporting it with fixes and features.
+Well, Godot community has grown a lot over the time I&amp;rsquo;ve been working on this little plugin, and I am happy to say that there are a lot of capable users that can do and will do their own sollutions, be it based in past works like mine, other friends&amp;rsquo; or even build something from scratch (which is really cool, you learn a lot).</description>
+			<content type="html"><![CDATA[<p>SMRT-Godot is a plugin I made to create dialogs for my game (which has
+still to come to life), over the course of almost two years now, I&rsquo;ve
+been supporting it with fixes and features.</p>
+
+<p>Well, Godot community has grown a lot over the time I&rsquo;ve been working on this
+little plugin, and I am happy to say that there are a lot of capable
+users that can do and will do their own sollutions, be it based in past
+works like mine, other friends&rsquo; or even build something from scratch
+(which is really cool, you learn a lot).</p>
+
+<p>Well, I&rsquo;m posting to announce that, the last update for SMRT-Godot for
+the 2.x branch has been out for quite some time, but I had yet to port
+it to godot 3.0. This is finally happening. YAY!<br />
+As of now I have the complete dialog system working in godot 3, with
+just some few things to iron out, mostly related to the new sound engine
+which I have still to get a hang of. I have been out of game dev for
+quite some time now thanks to personal matters and the time I have to
+work on games is getting shorter and shorter.</p>
+
+<p><img src="../../images/20180627_smrt_godot_legacy.png" alt="alive!" />
+It is alive!</p>
+
+<p>There is also the editor, which I will have to completely rewrite, both
+its GUI and code.</p>
+
+<p>While no more updates will be made for the tool, it is fairly stable and
+you should have no problems using it in the now legacy 2.1 version of
+godot.</p>
+
+<p>That&rsquo;s it, stay tunned for updates into my game, probably on twitter
+at <a href="https://twitter.com/brunosxs">@brunosxs</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Using SMRT-Godot - The dialog system with a fancy name</title>
+			<link>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</link>
+			<pubDate>Tue, 06 Jun 2017 12:54:00 -0700</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</guid>
+			<description>This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
+In here I&amp;rsquo;ll show a simple project to highlight some of the features of SMRT.
+Our basic scene
+ You can find this project in SMRT&amp;rsquo;s examples folder at the project&amp;rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&amp;hellip;</description>
+			<content type="html"><![CDATA[
+
+<p>This post is long due, but I found some motivation after talking to
+Nathan(from GDQuest, featured in my <a href="http://www.brunosxs.com/2016/11/list-of-game-dev-resources.html">list of gamedev
+resources</a>).<br />
+In here I&rsquo;ll show a simple project to highlight some of the features of
+SMRT.</p>
+
+<p><img src="../images/20170606_using_smrt.png" alt="SMRT GODOT" />
+Our basic scene</p>
+
+<blockquote>
+<p>You can find this project in SMRT&rsquo;s examples folder at the project&rsquo;s
+<a href="https://github.com/brunosxs/SMRT-Godot/tree/master/examples/cave">github
+repository</a>,
+download it and follow along.  </p>
+</blockquote>
+
+<p>Play the scene and interact with the characters before proceeding&hellip;</p>
+
+<p>Done?<br />
+Let&rsquo;s just go over the basic concept of SMRT: chapters, dialogs and
+texts<br />
+<strong>Texts</strong> are a single dialog box worth of text<br />
+<strong>Dialogs</strong> are a collection of <strong>texts,</strong> they are referenced through
+an unique name.<br />
+<strong>Chapters</strong> are a collection of <strong>dialogs</strong>. They represent the same
+concept of chapters in a book: A new point in the story. So they can say
+different things, while keeping the same dialog names with just a change
+in chapter<br />
+We will focus basically on the code for the following:</p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png" /></a></td>
+</tr>
+<tr class="even">
+<td>This is the final scene tree</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>World:</strong> It will be very simple, just setting the initial
+conditions for the rest of the scene through the use of Globals</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>Transition:</strong> A simple transition that will be played at a
+specific time later on.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>Player&rsquo;s avatar:</strong> With simple 8 directions movement.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>NPC node:</strong> That can detect if the player entered its interactive
+area and say things. to the player. </li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li><strong>A trigger:</strong> Basically an instance of the npc node with no sprite.
+It will be initially blocked by an NPC. When the player enters its
+area, a cutscene will play, and at the end of this cutscene, the
+chapter will change.</li>
+</ul>
+
+<p>For SMRT to work properly, it should be a child of a <strong>CanvasLayer</strong>.
+SMRT also needs a language file, it is a JSON that has info on how it
+should display messages.</p>
+
+<p>I created an editor for this process, access it by clicking on the
+following button:</p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png" alt="" /></a></p>
+
+<p>Use the load button and navigate to <em>res://examples/cave</em> to
+load <em>another_example.lan</em><br />
+<a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png" alt="" /></a></p>
+
+<p>Click in a chapter to display all available dialogs in the dialog&rsquo;s
+viewer, then click in one of the texts to edit its properties. For
+actions, you can add, duplicate, edit and delete chapters and dialogs
+while you can add, duplicate, delete and change the order of the texts
+with the arrows bellow the text field.</p>
+
+<p>Careful! There is no confirmation for deleting anything. So if you do
+something you didn&rsquo;t meant to, providing you haven&rsquo;t saved it yet, just
+load the file again.</p>
+
+<p><strong>The transition</strong></p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif" alt="" /></a></p>
+
+<h4 id="it-s-setup">It&rsquo;s setup:</h4>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png" alt="" /></a></p>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png" alt="" /></a></p>
+
+<p>It is a texture of 64x64 pixels that covers the entire viewport, with
+two keyframes for opacity: It starts at 0 and ends at 1.</p>
+
+<h4 id="the-world">The world</h4>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png" alt="" /></a></p>
+
+<p>The most important line is the forth one. On it, we create a global
+variable called &lsquo;chapter&rsquo; with the value &lsquo;intro&rsquo;. </p>
+
+<p>In the script for the npcs this value will be used and changed as
+desired.</p>
+
+<p>Lines 5 and 6 are basically SMRT and a fade transition node
+respectively.</p>
+
+<h2 id="the-player">The player</h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png" alt="" /></a></p>
+
+<p>Just simple movement, our player class will be passive, it will not have
+the methods to interact with objects by itself, this will be the work of
+the NPC node.</p>
+
+<p>Take note of line 7: This is how we will identify what character is the
+player for our NPCs.</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="k">extends</span> <span class="ne">KinematicBody2D</span>
+
+<span class="k">var</span> <span class="n">walk_speed</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">var</span> <span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">func</span> <span class="n">_ready</span><span class="p">():</span>
+	<span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+	<span class="ne">Globals</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> <span class="c1"># We make the player accessible more easily through Globals.</span>
+
+<span class="k">func</span> <span class="n">_fixed_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+	<span class="c1"># Simple movement for our char</span>
+	<span class="k">if</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_up&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_down&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_left&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+	<span class="k">elif</span> <span class="ne">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;player_right&#34;</span><span class="p">):</span>
+		<span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>	
+	<span class="n">move</span><span class="p">(</span><span class="n">direction</span><span class="o">*</span><span class="n">walk_speed</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="the-npc">The NPC</h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png" alt="" /></a></p>
+
+<p>It is a duplicate of the player char  with an Area2D for the interactive
+area.</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="k">extends</span> <span class="ne">KinematicBody2D</span>
+
+
+<span class="k">var</span> <span class="n">direction</span> <span class="o">=</span> <span class="ne">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">export</span> <span class="k">var</span> <span class="n">dialog_name</span> <span class="o">=</span> <span class="s2">&#34;FRIEND_TALK&#34;</span>
+<span class="k">export</span> <span class="k">var</span> <span class="n">start_at_message</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="n">can_interact</span> <span class="o">=</span> <span class="bp">true</span>
+
+<span class="k">func</span> <span class="n">_ready</span><span class="p">():</span>
+	<span class="n">get_node</span><span class="p">(</span><span class="s2">&#34;interactive_area&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;body_enter&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&#34;on_body_enter&#34;</span><span class="p">)</span>
+	<span class="k">pass</span>
+
+
+<span class="k">func</span> <span class="n">on_body_enter</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">body</span> <span class="o">==</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">):</span> <span class="c1"># Check if the character that entered is the player</span>
+		<span class="k">if</span> <span class="n">dialog_name</span> <span class="o">!=</span> <span class="n">null</span> <span class="ow">or</span> <span class="n">dialog_name</span> <span class="o">!=</span> <span class="s2">&#34;&#34;</span> <span class="ow">and</span> <span class="n">can_interact</span><span class="p">:</span> <span class="c1"># check if the npc has something to say and we can interact with</span>
+			<span class="n">can_interact</span> <span class="o">=</span> <span class="bp">false</span> <span class="c1"># make the npc non-interactive during the talk</span>
+			<span class="c1"># using some variables to shorten the burden of writing</span>
+			<span class="k">var</span> <span class="n">smrt</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;dialog&#34;</span><span class="p">)</span>
+			<span class="k">var</span> <span class="n">chapter</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;chapter&#34;</span><span class="p">)</span>
+			<span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">false</span><span class="p">)</span> <span class="c1"># We disable the player while the dialog happen</span>
+			<span class="n">smrt</span><span class="o">.</span><span class="n">show_text</span><span class="p">(</span><span class="n">chapter</span><span class="p">,</span> <span class="n">dialog_name</span><span class="p">,</span> <span class="n">start_at_message</span><span class="p">)</span> <span class="c1"># Start the dialog</span>
+			<span class="c1"># we can connect to the signal &#39;dialog_control&#39; and do different things based on the current state of the dialog</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">smrt</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">):</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">)</span>
+			
+			<span class="nb">yield</span><span class="p">(</span><span class="n">smrt</span><span class="p">,</span><span class="s2">&#34;finished&#34;</span><span class="p">)</span> <span class="c1"># wait for smrt to emit the finished signal so we can continue</span>
+			<span class="n">can_interact</span> <span class="o">=</span> <span class="bp">true</span> <span class="c1"># re-enable the npc interactiveness</span>
+			<span class="n">smrt</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="s2">&#34;dialog_control&#34;</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="s2">&#34;on_dialog&#34;</span><span class="p">)</span>
+			<span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;player&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fixed_process</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span> <span class="c1"># And finally, re-enable the player</span>
+			
+
+<span class="k">func</span> <span class="n">on_dialog</span><span class="p">(</span><span class="n">info</span><span class="p">):</span>
+<span class="c1">#	info is a dictionary that sends the following:</span>
+<span class="c1">#	answer: if a question was answered, it will give the index of the button selected, otherwise it is null</span>
+<span class="c1">#	chapter: the chapter currently active</span>
+<span class="c1">#	dialog: the dialog currently active</span>
+<span class="c1">#	last_text_index: the index of the last text that was displayed</span>
+<span class="c1">#	total_text: the number of texts in the currently active dialog</span>
+	
+	<span class="k">var</span> <span class="n">smrt</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;dialog&#34;</span><span class="p">)</span> <span class="c1"># Let&#39;s grab the dialog system into a 4 letter var</span>
+	
+	<span class="c1"># Check for an answer:</span>
+	<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">chapter</span> <span class="o">==</span> <span class="s2">&#34;intro&#34;</span><span class="p">:</span> <span class="c1"># it is good practice to also check what chapter and...</span>
+		<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">dialog</span> <span class="o">==</span> <span class="s2">&#34;friend_talk&#34;</span><span class="p">:</span> <span class="c1"># the dialog we&#39;re in</span>
+			<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">answer</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># There is only one question on this dialog, we check if the player answered &#34;Of course, I am fearless!&#34;</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># We kindly ask SMRT to stop</span>
+				<span class="nb">yield</span><span class="p">(</span><span class="n">get_tree</span><span class="p">(),</span><span class="s2">&#34;idle_frame&#34;</span><span class="p">)</span> <span class="c1"># and wait one frame for it to patch things up and quit nicelly</span>
+				<span class="n">smrt</span><span class="o">.</span><span class="n">show_text</span><span class="p">(</span><span class="s2">&#34;intro&#34;</span><span class="p">,</span><span class="s2">&#34;friend_talk_positive&#34;</span><span class="p">)</span> <span class="c1"># to finally follow it with a new dialog</span>
+				<span class="k">if</span> <span class="n">test_move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">)):</span> <span class="c1"># We will make the npc go out of the path</span>
+					<span class="n">move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="n">move</span><span class="p">(</span><span class="ne">Vector2</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;changed dialog name from &#34;</span><span class="p">,</span> <span class="n">get_name</span><span class="p">())</span>
+				<span class="n">dialog_name</span> <span class="o">=</span> <span class="s2">&#34;friend_talk_positive&#34;</span> <span class="c1"># We also change the dialog the npc will talk from now on so when the player interact with it from now on, it will show a new answer.</span>
+		<span class="k">elif</span> <span class="n">info</span><span class="o">.</span><span class="n">dialog</span> <span class="o">==</span> <span class="s2">&#34;great_adventure&#34;</span><span class="p">:</span>
+			<span class="k">var</span> <span class="n">transition</span> <span class="o">=</span> <span class="ne">Globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;transition&#34;</span><span class="p">)</span> <span class="c1"># Grab the transition node</span>
+			<span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">last_text_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># When the first text finishes</span>
+				<span class="n">transition</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="s2">&#34;fade&#34;</span><span class="p">)</span> <span class="c1"># we play a fade-to-black animation</span>
+			<span class="k">elif</span> <span class="n">info</span><span class="o">.</span><span class="n">last_text_index</span> <span class="o">==</span> <span class="n">info</span><span class="o">.</span><span class="n">total_text</span><span class="p">:</span> <span class="c1"># when the last dialog has finished</span>
+				<span class="n">transition</span><span class="o">.</span><span class="n">play_backwards</span><span class="p">(</span><span class="s2">&#34;fade&#34;</span><span class="p">)</span>  <span class="c1"># we play the same animation, backwards</span>
+				<span class="ne">Globals</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&#34;chapter&#34;</span><span class="p">,</span><span class="s2">&#34;after_going_there&#34;</span><span class="p">)</span> <span class="c1"># change the chapter</span>
+				<span class="nb">yield</span><span class="p">(</span><span class="n">transition</span><span class="p">,</span><span class="s2">&#34;finished&#34;</span><span class="p">)</span> <span class="c1"># wait for the transition to end</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<p>The variables from line 5 through 7 will dictate what the character will
+say, based on the language file loaded in SMRT. Exporting them, allow
+each instance to have its own string. The NPC will be responsible to see
+if the player entered its interactive area, for that, we need to connect
+the area2D to the npc.</p>
+
+<p>Doing it with the editor for one or two npcs is fine, but it is better
+to do it through code, this way we don&rsquo;t need to keep connecting areas
+to new npcs, This is done at _ready() in line 10. </p>
+
+<p>We connect the interactive_area to the function &ldquo;on_body_enter&rdquo;
+inside the npc itself. This function first checks if the body that
+entered is the player, then see if the npc has something to say (the
+dialog_name is not empty nor null) and if it can interact.</p>
+
+<p>If those conditions are met, we make <em>can_interact</em> <em>false</em> so we don&rsquo;t
+fire the event again until the dialog finishes, grab SMRT and the
+chapter in small variables(lines 19 and 20), stop the process of the
+player so he won&rsquo;t be able to move while the dialog happens (line 21)
+and finally call *show_text(chapter, dialog_name, start_at).* </p>
+
+<p>With this, we have a basic interaction between player and npc. We can
+pretty much make them say whatever we want. But the example is far from
+over&hellip;</p>
+
+<p>The npc that is blocking the exit will ask a question and make things
+happen based on it.  This happens thanks to the signal
+&ldquo;dialog_control&rdquo;. It can give us important info like the answer a
+player gave in a question.</p>
+
+<p>At line 24, we check if the signal <em>dialog_control</em> is already
+connected. If it isn&rsquo;t, we connect it to the npc&rsquo;s function
+<em>on_dialog. </em></p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png" /></a></td>
+</tr>
+<tr class="even">
+<td>friend_talk is the first npc's dialog,<br />
+the one blocking the exit of the cave</td>
+</tr>
+</tbody>
+</table>
+
+<p>Then, through lines 44 and 45 we check if we&rsquo;re in the &ldquo;intro&rdquo; chapter
+and if the dialog playing is &ldquo;friend_talk&rdquo;, checking for the answer
+index sent by SMRT. So we check for the first option to be clicked and
+make the npc move out of the way. We also change the dialog the char
+will say from now on to <em>friend_talk_positive</em>.</p>
+
+<p>It may seem  obvious, but you should handle what the answers will do. If
+you don&rsquo;t code anything, SMRT will simply continue the dialog until the
+end, regardless of the answer selected. This is also why we don&rsquo;t check
+for the negative option, as the dialog will simply continue to it.</p>
+
+<h3 id="the-trigger">The Trigger</h3>
+
+<p>The trigger is a duplicate of the npc. It behaves exactly like one with
+the exception that it doesn&rsquo;t have a sprite set. Its dialog is set to
+&ldquo;<em>great_adventure</em>&rdquo;.</p>
+
+<p>This is also handled inside the npc&rsquo;s script. from line 56 to line 63.</p>
+
+<p>When the very first message of <em>great_adventure</em> finishes, the screen
+will fade to black while the dialog continues. At the end of it, we
+change the chapter global to &ldquo;*after_going_there&rdquo;* and life goes on.</p>
+
+<h2 id="the-second-npc">The second NPC</h2>
+
+<p><a href="../images/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png"><img src="../images/thumbnails/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png" alt="" /></a></p>
+
+<p>This one just illustrates the usefulness of the chapter &gt; dialog
+paradigm.  This npc will start the dialog &ldquo;*that_guy_talk&rdquo;.* In the
+language file, there exists two versions of &ldquo;that_guy_talk&rdquo;, each in
+the two different chapters.</p>
+
+<p>This is all you need to do to make the same chars say different things
+based on moments of the game. </p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+
+<p>This can give you a pretty good foundation to work with SMRT in your
+projects.</p>
+
+<p>I hope this helps you work on your game. I learned a lot thanks to
+people writing articles, sharing knowledgement and directly helping me
+in my doubts. In a way, it is me continuing the cycle.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling</title>
+			<link>https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/</link>
+			<pubDate>Sun, 21 May 2017 08:37:00 -0700</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/</guid>
+			<description>Now I share with you guys how I handle save files in games. It is a pretty simple script that&amp;hellip; well, works.
+Godot also has a ConfigFile class that can be used for it, but I preffer to work with dictionaries because my code ends simpler.
+With basically 3 variables
+default_save
+current_save_game
+save_slot
+*
+*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game.</description>
+			<content type="html"><![CDATA[<p><a href="../images/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png"><img src="../images/thumbnails/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png" alt="" /></a></p>
+
+<p>Now I share with you guys how I handle save files in games. It is a
+pretty simple script that&hellip; well, works.<br />
+Godot also has a <em>ConfigFile class</em> that can be used for it, but I
+preffer to work with dictionaries because my code ends simpler.</p>
+
+<p>With basically 3 variables<br />
+<strong><em>default_save</em></strong><br />
+<strong><em>current_save_game</em></strong><br />
+<strong><em>save_slot</em></strong><br />
+*<br />
+*The basic idea is: This file is a singleton and uses
+current_save_game to store the info we want to use in our game. At the
+start of the game, it tries to load the desired save file based on the
+save_slot. If it doesn&rsquo;t exist, it creates one with the contents of
+another var called default_save</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="c1"># Created by BrunoSXS</span>
+<span class="c1"># LICENSED UNDER MIT</span>
+
+<span class="k">var</span> <span class="n">save_slot</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Just like classic JRPs, change the slot to save in a different place</span>
+<span class="k">var</span> <span class="n">current_save_game</span> <span class="c1"># This is the contents of the save file, for now we just declare it</span>
+<span class="k">var</span> <span class="n">default_save</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;money&#34;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&#34;powers&#34;</span><span class="p">:</span><span class="n">null</span><span class="p">}</span> <span class="c1"># The default save contents, if there is no save file to load, then, the current_save_game gets its contents from this variable and then creates a save file with it</span>
+
+<span class="k">func</span> <span class="n">_ready</span><span class="p">():</span>
+	<span class="n">current_save_game</span> <span class="o">=</span> <span class="n">load_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">)</span> <span class="k">if</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">load_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">))</span> <span class="o">==</span> <span class="n">TYPE_DICTIONARY</span> <span class="k">else</span> <span class="n">default_save</span> <span class="c1"># This is the first loading, when the game starts.</span>
+
+<span class="k">func</span> <span class="n">load_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">):</span> <span class="c1"># I used the concept of save slots to handle multiple saves, use what suits you.</span>
+	<span class="k">var</span> <span class="n">F</span> <span class="o">=</span> <span class="ne">File</span><span class="o">.</span><span class="n">new</span><span class="p">()</span> <span class="c1"># We initialize the File class</span>
+	<span class="k">var</span> <span class="n">D</span> <span class="o">=</span> <span class="ne">Directory</span><span class="o">.</span><span class="n">new</span><span class="p">()</span> <span class="c1"># and the Directory class</span>
+	<span class="k">if</span> <span class="n">D</span><span class="o">.</span><span class="n">dir_exists</span><span class="p">(</span><span class="s2">&#34;user://save&#34;</span><span class="p">):</span> <span class="c1"># Check if the folder &#39;save&#39; exists before moving on</span>
+		<span class="k">if</span> <span class="n">F</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&#34;user://save/&#34;</span><span class="p">,</span><span class="n">save_slot</span><span class="p">,</span><span class="s2">&#34;.save&#34;</span><span class="p">),</span> <span class="ne">File</span><span class="o">.</span><span class="n">READ_WRITE</span><span class="p">)</span> <span class="o">==</span> <span class="n">OK</span><span class="p">:</span> <span class="c1"># If the opening of the save file returns OK</span>
+			<span class="k">var</span> <span class="n">temp_d</span> <span class="c1"># we create a temporary var to hold the contents of the save file</span>
+			<span class="n">temp_d</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">get_var</span><span class="p">()</span> <span class="c1"># we get the contents of the save file and store it on TEMP_D</span>
+			<span class="k">return</span> <span class="n">temp_d</span> <span class="c1"># we return it to do our thing</span>
+		<span class="k">else</span><span class="p">:</span> <span class="c1"># In case the opening of the save file doesn&#39;t give an OK, we create a save file</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;save file doesn&#39;t exist, creating one&#34;</span><span class="p">)</span> 
+			<span class="n">save_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">)</span> 
+	<span class="k">else</span><span class="p">:</span> <span class="c1"># If the folder doesn&#39;t exist, we create one...</span>
+		<span class="n">D</span><span class="o">.</span><span class="n">make_dir</span><span class="p">(</span><span class="s2">&#34;user://save&#34;</span><span class="p">)</span>
+		<span class="n">save_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">)</span> <span class="c1"># and we create the save file using the save_game function</span>
+
+<span class="k">func</span> <span class="n">save_game</span><span class="p">(</span><span class="n">save_slot</span><span class="p">):</span> <span class="c1"># This functions save the contents of current_save_game variable into a file </span>
+	<span class="k">var</span> <span class="n">F</span> <span class="o">=</span> <span class="ne">File</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+	<span class="n">F</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&#34;user://save/&#34;</span><span class="p">,</span><span class="n">save_slot</span><span class="p">,</span><span class="s2">&#34;.save&#34;</span><span class="p">),</span> <span class="ne">File</span><span class="o">.</span><span class="n">READ_WRITE</span><span class="p">)</span> <span class="c1"># we open the file</span>
+	<span class="n">F</span><span class="o">.</span><span class="n">store_var</span><span class="p">(</span><span class="n">current_save_game</span><span class="p">)</span> <span class="c1"># then we store the contents of the var save inside it</span>
+	<span class="n">F</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># and we gracefully close the file :)</span>
+    </code></pre></td></tr></table>
+</div>
+</div>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Signals in godot</title>
+			<link>https://brunosxs.com/posts/2017-02-18-signals-in-godot/</link>
+			<pubDate>Sat, 18 Feb 2017 10:49:00 -0800</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2017-02-18-signals-in-godot/</guid>
+			<description>Understanding signals in godot game engine by brunosxs  from Bruno Sxs   Download the examples</description>
+			<content type="html"><![CDATA[<p><iframe src="//www.slideshare.net/slideshow/embed_code/key/NFOCjpoarB7v7C" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/brunosxs/understanding-signals-in-godot-game-engine-by-brunosxs" title="Understanding signals in godot game engine by brunosxs" target="_blank">Understanding signals in godot game engine by brunosxs</a> </strong> from <strong><a href="https://www.slideshare.net/brunosxs" target="_blank">Bruno Sxs </a></strong> </div>
+<a href="https://github.com/brunosxs/godot-signals-tutorial-demo">Download the
+examples</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Godot Engine Quick Tips - 01: create_timer() helper for yielding a script</title>
+			<link>https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/</link>
+			<pubDate>Tue, 14 Feb 2017 05:40:00 -0800</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/</guid>
+			<description>Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
+There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist.</description>
+			<content type="html"><![CDATA[<p><a href="../images/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png"><img src="../images/thumbnails/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png" alt="" /></a></p>
+
+<p>Implemented during the middle of last year(or at least publicly
+announced by the devs) was a small but really useful feature that was
+overlooked by me at the time thanks to the rapid evolutionary pace of
+Godot, it is a an optional way to yield the script for an amount of
+time.</p>
+
+<p>There are basically two ways of doing it: You could either create the
+timer in the editor and access it through code or you could create it
+all trough code at runtime as I did in the gist.</p>
+
+<p>It essentially makes the 5 lines of code go down to 1, which helps a lot
+in code organization.</p>
+
+<p>The only downside: It is <strong>not</strong> available on the stable branch yet(at
+the moment: 2.1.2) but you can get it on the 2.2-legacy branch or in the
+master branch of godot.</p>
+
+<p>See the gist, from line 5 to 14 I wrote the code using the default way,
+and from line 21 to 23 we see the same thing with the new
+create_timer() function:</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Update to SMRT-Godot</title>
+			<link>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</link>
+			<pubDate>Fri, 27 Jan 2017 02:47:00 -0800</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2017-01-27-update-to-smrt-godot/</guid>
+			<description>Just updated SMRT-Godot with some bugfixes and changes after some months compiling feedback.
+What is SMRT-Godot?
+It is a dialog system for your games, written as a plugin for godot that enables you to create classic dialog boxes with a lot of personalization.
+See it in action:
+I have just sent this new version to godot&amp;rsquo;s assetlib, so it is probably not updated there, but on the repo you can find the latest version and some examples.</description>
+			<content type="html"><![CDATA[<p>Just updated SMRT-Godot with some bugfixes and changes after some months
+compiling feedback.</p>
+
+<p>What is SMRT-Godot?<br />
+It is a dialog system for your games, written as a plugin for godot that
+enables you to create classic dialog boxes with a lot of
+personalization.<br />
+See it in action:</p>
+
+<p>I have just sent this new version to godot&rsquo;s assetlib, so it is probably
+not updated there, but on the repo you can find the latest version and
+some examples.</p>
+
+<p>SMRT-Godot is licensed under MIT.</p>
+
+<p><a href="https://github.com/brunosxs/SMRT-Godot">Go to the repo</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>To bite more than you can chew: Another Ludum Dare 37 dev story of missteps</title>
+			<link>https://brunosxs.com/posts/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps/</link>
+			<pubDate>Mon, 19 Dec 2016 13:32:00 -0800</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps/</guid>
+			<description>So, earlier this month happened this popular event on the indie game dev community, LDJAM, basically you have a theme and 72 hours to finish an entire game based on it. This time around, the theme was &amp;ldquo;One Room&amp;rdquo;.
+I thought to myself: &amp;ldquo;OK! I got this!&amp;rdquo;
+No I didn&amp;rsquo;t&amp;hellip;
+Presenting ROOM JUDGE(working title) - And how an apparent concrete idea can go wrong with lofty sense of scale and complexity&amp;hellip; The idea: Making a game where you as the player would furnish the room and then, be judged from it.</description>
+			<content type="html"><![CDATA[
+
+<p>So, earlier this month happened this popular event on the indie game dev
+community, LDJAM, basically you have a theme and 72 hours to finish an
+entire game based on it. This time around, the theme was &ldquo;One Room&rdquo;.</p>
+
+<p>I thought to myself: &ldquo;OK! I  got this!&rdquo;</p>
+
+<p>No I didn&rsquo;t&hellip;</p>
+
+<h4 id="presenting-room-judge-working-title-and-how-an-apparent-concrete-idea-can-go-wrong-with-lofty-sense-of-scale-and-complexity">Presenting ROOM JUDGE(working title) - And how an apparent concrete idea can go wrong with lofty sense of scale and complexity&hellip;</h4>
+
+<p>The idea: Making a game where you as the player would furnish the room
+and then, be judged from it. Inspired by The Sims&rsquo; original concept(A
+furnishing game, on which the sims played pretty much the same roles as
+the judges of my game).</p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15450917_1466363750060128_1471159005_n.jpg"><img src="../images/thumbnails/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15450917_1466363750060128_1471159005_n.jpg" /></a></td>
+</tr>
+<tr class="even">
+<td>mockup of the UI</td>
+</tr>
+</tbody>
+</table>
+
+<p>But for me the game was not about furnishing, it was more about how
+those judges would react to the decoration. I thought a lot about its
+mechanics and was sure I could have made something good out of it. Even
+the graphics(the thing I suck the most) were coming nicely. The
+bird&rsquo;s-view perspective was also to make things simpler to draw and
+animate.</p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15416959_1465921846770985_2123776522_n.gif"><img src="../images/thumbnails/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15416959_1465921846770985_2123776522_n.gif" /></a></td>
+</tr>
+<tr class="even">
+<td>The first of 5 judges</td>
+</tr>
+</tbody>
+</table>
+
+<p>As you can pretty much get from the title, this was too much for me to
+chew.</p>
+
+<p><a href="../images/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15515510_1467048496658320_1691391247_o.jpg"><img src="../images/thumbnails/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15515510_1467048496658320_1691391247_o.jpg" alt="" /></a><a href="../images/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15494093_1466362786726891_1717331530_n.jpg"><img src="../images/thumbnails/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-15494093_1466362786726891_1717331530_n.jpg" alt="" /></a></p>
+
+<ul>
+<li>Although most of the graphics were static, the sheer quantity I had to
+drawn took me  a lot longer than I thought originally.
+
+<br /></li>
+</ul>
+
+<p>This was a big planning error. It was not the biggest, but ultimately
+killed the project.</p>
+
+<p>The very first 24 hours were dedicated to the graphics alone, I
+generally start with the engine, test, tweak and then move to the
+graphics(sometimes doing the music first), but as I had everything I
+thought I needed written on my tablet the night prior, I thought I could
+start by the worst part for me.</p>
+
+<p>The problem is, during the second day, early in the morning I was
+starting to see that, to make the game work as a game, mainly to be fun
+as I envisioned, I would have needed a lot more time to tweak the
+engine. At the state it was, while working, it simply wasn&rsquo;t fun. </p>
+
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="../images/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-19-01-13.png"><img src="../images/thumbnails/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps-19-01-13.png" /></a></td>
+</tr>
+<tr class="even">
+<td>The idea of a VS Screen and an intro kinda like a fighting game stuck into me. I also am guilty of having a lot of fun making the characters personalities and wasting precious time that should have been used first on the engine.</td>
+</tr>
+</tbody>
+</table>
+
+<p>So, by mid-sunday I was in a dire spot, realizing the mistakes I made
+since the very begining, and everything kinda went downhill from there.</p>
+
+<p>The lesson here is: You&rsquo;re never as ready as you think you are in
+bringing a project to life. Be reasonable with your
+minimal-viable-product.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>A game with code and graphics under 48kb</title>
+			<link>https://brunosxs.com/posts/2016-11-12-a-game-with-code-and-graphics-under-48kb/</link>
+			<pubDate>Sat, 12 Nov 2016 11:51:00 -0800</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2016-11-12-a-game-with-code-and-graphics-under-48kb/</guid>
+			<description>I recently bought a little program that emulates a &amp;ldquo;console/computer&amp;rdquo;, but this computer never existed to begin with.
+It is called PICO8 and its main selling point is that you have to make a game under heavy constrains. For an example, it has only 16 colors, a sequencer to compose music and a very simple audio synth that makes me remember the old commodore 64.
+I&amp;rsquo;ve made some little code and tests on it, and it sparkled my desire to try something like that in javascript.</description>
+			<content type="html"><![CDATA[<p>I recently bought a little program that emulates a &ldquo;console/computer&rdquo;,
+but this computer never existed to begin with.</p>
+
+<p>It is called PICO8 and its main selling point is that you have to make a
+game under heavy constrains. For an example, it has only 16 colors, a
+sequencer to compose music and a very simple audio synth that makes me
+remember the old commodore 64.</p>
+
+<p>I&rsquo;ve made some little code and tests on it, and it sparkled my desire to
+try something like that in javascript. So&hellip; why not?</p>
+
+<p>The (as of now) rules:</p>
+
+<ul>
+<li>48KB max size</li>
+<li>Using some game engine(I decided to look
+at <a href="http://www.melonjs.github.io/">melonjs</a> and <a href="https://phaser.io/">phaser</a></li>
+<li>Using a sequencer(no mp3 or ogg) I am looking
+at <a href="https://github.com/Tonejs/Tone.js">ToneJS</a></li>
+<li>Using the same palette as pico8</li>
+<li>The libs for melonjs and ToneJS doesn&rsquo;t add to the 48KB size limit.</li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>List of game dev resources</title>
+			<link>https://brunosxs.com/posts/2016-09-25-list-of-game-dev-resources/</link>
+			<pubDate>Sun, 25 Sep 2016 15:51:00 -0700</pubDate>
+			
+			<guid>https://brunosxs.com/posts/2016-09-25-list-of-game-dev-resources/</guid>
+			<description>Throughout the year I&amp;rsquo;ve been in an always-learning process while making my game and interacting with a lot of incredible individuals in many fields. I&amp;rsquo;ve also experienced quite a lot of game engines, frameworks, courses, books and all-things related to game development, be it the game-design side of things, the marketing, narrative methods, scripts&amp;hellip; So, I&amp;rsquo;d like to help people with a kind of list of some of the resources and individuals that I found really helpful overall.</description>
+			<content type="html"><![CDATA[
+
+<p>Throughout the year I&rsquo;ve been in an always-learning process while making my game
+and interacting with a lot of incredible individuals in many fields.
+I&rsquo;ve also experienced quite a lot of game engines, frameworks, courses,
+books and all-things related to game development, be it the game-design
+side of things, the marketing, narrative methods, scripts&hellip; So, I&rsquo;d
+like to help people with a kind of list of some of the resources and
+individuals that I found really helpful overall.</p>
+
+<p>The list is of course, handled in a loose way, with no particular order, and
+I am very prone of forgetting things, so I do plan on updating and
+correcting it to do justice to all of the content.</p>
+
+<h2 id="basic-tools">Basic tools:</h2>
+
+<p><a href="https://www.codecademy.com/pt-BR/learn/learn-git">Codeacademy&rsquo;s git
+course</a> GIT is
+everywhere in gamedevelopment, and for a very good reason. It is good&hellip;
+or should I say, invaluable to learn it as it will save your ass for the
+rest of your gaming carrer.</p>
+
+<h2 id="all-around">All-around</h2>
+
+<ul>
+<li><strong><a href="http://www.gamefromscratch.com/">GameFromScratch:</a></strong> Would be
+nice if we could find a site that had reviews, analysis and info
+about engines, important news and entire series dedicated to study a
+single engine/software. Well, this is it&hellip; or as close as we can
+humanly get.</li>
+<li><strong><a href="https://www.youtube.com/user/ExtraCreditz">Extra Credits:</a> </strong>With
+really indepth and intriscit analysis about the market, game design,
+mechanics, animation and everything related to the medium.This
+channel is a gold mine.</li>
+</ul>
+
+<p><span
+style="color: #333333; font-family: &quot;merriweather&quot; , serif;"></span>
+<span
+style="color: #333333; font-family: &quot;merriweather&quot; , serif;"><br />
+</span></p>
+
+<p><span
+style="color: #333333; font-family: &quot;merriweather&quot; , serif;"></span></p>
+
+<h2 id="art">Art</h2>
+
+<p><strong><a href="https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ">GDQuest:</a></strong>
+This is a channel and community headed by Nathan, a freelancer game
+artist with a terrifc painted art-style. It is an impressive collection
+of material related to game design, teaching and giving tips about art
+in specific. He gives advices about softwares, workflows with great
+quality content and a methodology that would make some teachers feel
+ashamed.
+<strong><a href="http://2dgameartforprogrammers.blogspot.com.au/">2DGameArtGuru:</a></strong>
+Another great resource for anyone hoping to learn make art for games.
+The author focuses on vector drawing and uses Inkscape, giving really
+good insights on how to create effective and modular art.
+-   <strong><a href="http://www.2dgameartguru.com/2011/11/character-animation.html">  Character
+    animation</a></strong>
+-   <strong><a href="http://www.2dgameartguru.com/2016/05/creating-2d-special-fx-in-inkscape-part1.html">Creating 2D Special FX in Inkscape -
+    part1</a></strong></p>
+
+<p><strong><a href="https://www.youtube.com/user/uheartbeast">HeartBeast Games:</a></strong>
+HeartBeast focuses on gamemaker and pixel art tutorials.
+-   <strong><a href="https://www.youtube.com/watch?v=DNHIc85rYXI&amp;list=PL9FzW-m48fn1gHoXXwep4blLnvVGHyeYj">Let&rsquo;s pixel
+    series</a></strong></p>
+
+<p><strong><a href="https://www.youtube.com/channel/UCGOJ92rTGadpUha61KrqrLQ">Ache
+bit:</a></strong> Another
+awesome source for inspiration and tutorials on pixel art
+<strong><a href="https://www.youtube.com/channel/UCzZPlxdKOnqz7wZwSywD3wg">CtrlPaint:</a> </strong>Not
+strictly focused on games, but one of the best free resources on the web
+for learning to draw and paint.</p>
+
+<h2 id="programming">Programming</h2>
+
+<p><strong><a href="https://www.youtube.com/user/BSVino">Jorge Rodriguez:</a></strong> One of the
+most difficult things for me was the basic foundation of programming, as
+I am <s>badly</s> self-thaught, a lot of times I struggled(and still do)
+with things that could have been solved way faster if I had the
+foundation and programming-background. Well, this channel is filled to
+the brim with videos and examples about math and programming concepts
+related to games. Vectors, movement, physics, you name it&hellip;</p>
+
+<h2 id="engine-specific">Engine specific</h2>
+
+<h3 id="unity">Unity</h3>
+
+<p><strong><a href="https://www.youtube.com/channel/UCmtyQOKKmrMVaKuRXz02jbQ">Sebastian
+Lague:</a></strong>
+Stumbled upon his videos when I was looking at unity and to this day, he
+really impresses me with his tutorial series about unity and also 3D
+character creation and animation. He has material that can only be
+considered a complete course, from start to finish on how to model and
+animate a character, how to use it in unity, an entire series dedicated
+on first-timers with the engine and more&hellip;</p>
+
+<h3 id="godot-engine">Godot Engine</h3>
+
+<p><a href="https://github.com/Jbat1Jumper/erythrina">Jbat1Jumper&rsquo;s erythrina</a>: For
+beginners who would like to jump straight to a project to learn, I can&rsquo;t
+recomenda enough this tutorial series. It teaches godot&rsquo;s node system,
+interface and the actual nodes being used, in a very beginner-friendly
+way.</p>
+
+<p><strong><a href="https://www.youtube.com/channel/UCckpus81gNin1aV8WSffRKw">Andreas
+Esau:</a></strong>
+Andreas has developed not only a series about Godot Engine but also
+plugins for the tool itself. He is also the author of the Cutout
+Animation Tools, a plugin for blender that makes it possible to create
+modular 2D animation based on bones, like spine or spriter, but
+completely free and open source.</p>
+
+<h3 id="game-maker">Game maker</h3>
+
+<p><strong><a href="https://www.youtube.com/user/uheartbeast">HeartBeast Games</a>:</strong> As
+mentioned earlier, HeartBeast focuses on gamemaker to create games and
+also teaches concepts and mechanics in a very clear way.</p>
+
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=WB2alpO62GM&amp;list=PL9FzW-m48fn2ug_FSNnfozQs3qYlBNyTd">Make an RPG tutorial
+series</a></strong>
+
+<br /></li>
+</ul>
+
+<h2 id="books">Books</h2>
+
+<p><strong><a href="https://bossfightbooks.com/products/spelunky-by-derek-yu">Derek Yu -
+Spelunky:</a></strong> This
+is a nice insight on the creation of this indie hit. For me it was
+really motivational reading Yu&rsquo;s background before developing Spelunky,
+the challenges and the much needed focus if you&rsquo;re an indie.</p>
+
+<p>If you know any good source for learning gamedev related things, drop a
+line in the comments!</p>
+]]></content>
+		</item>
 		
 	</channel>
 </rss>
