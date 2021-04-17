@@ -7,16 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 27 Jan 2019 15:39:21 -0200</lastBuildDate><atom:link href="https://brunosxs.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Flutter Quick Tips</title>
-      <link>https://brunosxs.com/posts/flutter-quick-tips/</link>
-      <pubDate>Sun, 27 Jan 2019 15:39:21 -0200</pubDate>
-      
-      <guid>https://brunosxs.com/posts/flutter-quick-tips/</guid>
-      <description> InkWell: any child added to it turns into a button. It has the events &amp;ldquo;onTap&amp;rdquo;, &amp;ldquo;onLongPress&amp;rdquo; and &amp;ldquo;onDoubleTap&amp;rdquo;. Simply add your methods to those and you can make that text widget or that image a button.  </description>
-    </item>
-    
+    <lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate><atom:link href="https://brunosxs.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SMRT-Godot Legacy and the future of SMRT</title>
       <link>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</link>
