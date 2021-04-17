@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gamedev on BrunoSXS</title>
@@ -7,19 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate>
-    
-	<atom:link href="https://brunosxs.com/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate><atom:link href="https://brunosxs.com/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SMRT-Godot Legacy and the future of SMRT</title>
       <link>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</link>
       <pubDate>Wed, 27 Jun 2018 15:53:00 -0700</pubDate>
       
       <guid>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</guid>
-      <description>SMRT-Godot is a plugin I made to create dialogs for my game (which has still to come to life), over the course of almost two years now, I&amp;rsquo;ve been supporting it with fixes and features.
-Well, Godot community has grown a lot over the time I&amp;rsquo;ve been working on this little plugin, and I am happy to say that there are a lot of capable users that can do and will do their own sollutions, be it based in past works like mine, other friends&amp;rsquo; or even build something from scratch (which is really cool, you learn a lot).</description>
+      <description>SMRT-Godot is a plugin I made to create dialogs for my game (which has still to come to life), over the course of almost two years now, I&amp;rsquo;ve been supporting it
+Godot community has grown a lot over the time I&amp;rsquo;ve been working on this little plugin, and I am happy to say that there are a lot of capable users that can do and will do their own sollutions, be it based in past works like mine, other friends&#39; or even build something from scratch (which is really cool, you learn a lot).</description>
     </item>
     
     <item>
@@ -34,8 +30,7 @@ With basically 3 variables
 default_save
 current_save_game
 save_slot
-*
-*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game.</description>
+   *The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game.</description>
     </item>
     
     <item>
@@ -44,7 +39,7 @@ save_slot
       <pubDate>Sat, 18 Feb 2017 10:49:00 -0800</pubDate>
       
       <guid>https://brunosxs.com/posts/2017-02-18-signals-in-godot/</guid>
-      <description>Understanding signals in godot game engine by brunosxs  from Bruno Sxs   Download the examples</description>
+      <description></description>
     </item>
     
     <item>

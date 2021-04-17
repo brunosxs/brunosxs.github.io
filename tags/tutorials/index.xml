@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tutorials on BrunoSXS</title>
@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 18 Feb 2017 10:49:00 -0800</lastBuildDate>
-    
-	<atom:link href="https://brunosxs.com/tags/tutorials/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 18 Feb 2017 10:49:00 -0800</lastBuildDate><atom:link href="https://brunosxs.com/tags/tutorials/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Signals in godot</title>
       <link>https://brunosxs.com/posts/2017-02-18-signals-in-godot/</link>
       <pubDate>Sat, 18 Feb 2017 10:49:00 -0800</pubDate>
       
       <guid>https://brunosxs.com/posts/2017-02-18-signals-in-godot/</guid>
-      <description>Understanding signals in godot game engine by brunosxs  from Bruno Sxs   Download the examples</description>
+      <description></description>
     </item>
     
   </channel>

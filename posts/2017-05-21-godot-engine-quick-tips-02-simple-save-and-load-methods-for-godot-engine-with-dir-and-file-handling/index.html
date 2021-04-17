@@ -14,30 +14,22 @@ With basically 3 variables
 default_save
 current_save_game
 save_slot
-*
-*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game.">
-
-
-<meta itemprop="datePublished" content="2017-05-21T08:37:00-07:00" />
+   *The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game."><meta itemprop="datePublished" content="2017-05-21T08:37:00-07:00" />
 <meta itemprop="dateModified" content="2017-05-21T08:37:00-07:00" />
-<meta itemprop="wordCount" content="442">
-
-
-
-<meta itemprop="keywords" content="godot,gamedev,quick tips," />
-<meta property="og:title" content="Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling" />
+<meta itemprop="wordCount" content="441">
+<meta itemprop="keywords" content="godot,gamedev,quick tips," /><meta property="og:title" content="Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling" />
 <meta property="og:description" content="Now I share with you guys how I handle save files in games. It is a pretty simple script that&hellip; well, works.
 Godot also has a ConfigFile class that can be used for it, but I preffer to work with dictionaries because my code ends simpler.
 With basically 3 variables
 default_save
 current_save_game
 save_slot
-*
-*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game." />
+   *The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/" />
+<meta property="og:url" content="https://brunosxs.com/posts/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-05-21T08:37:00-07:00" />
 <meta property="article:modified_time" content="2017-05-21T08:37:00-07:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling"/>
 <meta name="twitter:description" content="Now I share with you guys how I handle save files in games. It is a pretty simple script that&hellip; well, works.
@@ -46,8 +38,7 @@ With basically 3 variables
 default_save
 current_save_game
 save_slot
-*
-*The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game."/>
+   *The basic idea is: This file is a singleton and uses current_save_game to store the info we want to use in our game."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -63,7 +54,7 @@ save_slot
 
 <body id="page">
 	
-	<header id="site-header" class="animated slideInUp faster">
+	<header id="site-header" class="animated slideInUp">
 		<div class="hdr-wrapper section-inner">
 			<div class="hdr-left">
 				<div class="site-branding">
@@ -94,27 +85,26 @@ save_slot
 				<h1>Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling</h1>
 			</header>
 			<div class="content">
-				<p><a href="../images/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png"><img src="../images/thumbnails/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png" alt="" /></a></p>
-
+				<p><a href="../images/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png"><img src="../images/thumbnails/2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling-test.png" alt=""></a></p>
 <p>Now I share with you guys how I handle save files in games. It is a
-pretty simple script that&hellip; well, works.<br />
+pretty simple script that&hellip; well, works.<br>
 Godot also has a <em>ConfigFile class</em> that can be used for it, but I
 preffer to work with dictionaries because my code ends simpler.</p>
-
-<p>With basically 3 variables<br />
-<strong><em>default_save</em></strong><br />
-<strong><em>current_save_game</em></strong><br />
-<strong><em>save_slot</em></strong><br />
-*<br />
-*The basic idea is: This file is a singleton and uses
+<p>With basically 3 variables<br>
+<em><strong>default_save</strong></em><br>
+<em><strong>current_save_game</strong></em><br>
+<em><strong>save_slot</strong></em></p>
+<ul>
+<li></li>
+</ul>
+<p>*The basic idea is: This file is a singleton and uses
 current_save_game to store the info we want to use in our game. At the
 start of the game, it tries to load the desired save file based on the
 save_slot. If it doesn&rsquo;t exist, it creates one with the contents of
 another var called default_save</p>
-
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-gdscript" data-lang="gdscript"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -182,31 +172,13 @@ another var called default_save</p>
 </div>
 
 			</div>
-
-<div class="related-posts thin">
-	<h2>See Also</h2>
-	<ul>
-	
-	<li><a href="/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/">Godot Engine Quick Tips - 01: create_timer() helper for yielding a script</a></li>
-	
-	<li><a href="/posts/2017-02-18-signals-in-godot/">Signals in godot</a></li>
-	
-	<li><a href="/posts/2016-09-25-list-of-game-dev-resources/">List of game dev resources</a></li>
-	
-	<li><a href="/posts/2017-01-27-update-to-smrt-godot/">Update to SMRT-Godot</a></li>
-	
-	<li><a href="/posts/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps/">To bite more than you can chew: Another Ludum Dare 37 dev story of missteps</a></li>
-	
-	</ul>
-</div>
-
 			<hr class="post-end">
 			<footer class="post-info">
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>Bruno SXS Alves</p>
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://brunosxs.com/tags/godot">godot</a></span><span class="tag"><a href="https://brunosxs.com/tags/gamedev">gamedev</a></span><span class="tag"><a href="https://brunosxs.com/tags/quick-tips">quick tips</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>442 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>441 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-05-21 12:37 -0300</p>
 			</footer>
 		</article>
@@ -223,7 +195,7 @@ another var called default_save</p>
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2019 <a href="https://brunosxs.com">BrunoSXS</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>&copy; 2021 <a href="https://brunosxs.com">BrunoSXS</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://brunosxs.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>
@@ -231,7 +203,7 @@ another var called default_save</p>
 
 
 
-	<script src="https://brunosxs.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	<script src="https://brunosxs.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
 	
 <script type="application/javascript">
 var doNotTrack = false;

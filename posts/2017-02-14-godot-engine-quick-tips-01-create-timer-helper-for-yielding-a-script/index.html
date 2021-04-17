@@ -9,23 +9,17 @@
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Godot Engine Quick Tips - 01: create_timer() helper for yielding a script">
 <meta itemprop="description" content="Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
-There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist.">
-
-
-<meta itemprop="datePublished" content="2017-02-14T05:40:00-08:00" />
+There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist."><meta itemprop="datePublished" content="2017-02-14T05:40:00-08:00" />
 <meta itemprop="dateModified" content="2017-02-14T05:40:00-08:00" />
 <meta itemprop="wordCount" content="172">
-
-
-
-<meta itemprop="keywords" content="programming,godot,gamedev,quick tips," />
-<meta property="og:title" content="Godot Engine Quick Tips - 01: create_timer() helper for yielding a script" />
+<meta itemprop="keywords" content="programming,godot,gamedev,quick tips," /><meta property="og:title" content="Godot Engine Quick Tips - 01: create_timer() helper for yielding a script" />
 <meta property="og:description" content="Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
 There are basically two ways of doing it: You could either create the timer in the editor and access it through code or you could create it all trough code at runtime as I did in the gist." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/" />
+<meta property="og:url" content="https://brunosxs.com/posts/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-02-14T05:40:00-08:00" />
 <meta property="article:modified_time" content="2017-02-14T05:40:00-08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Godot Engine Quick Tips - 01: create_timer() helper for yielding a script"/>
 <meta name="twitter:description" content="Implemented during the middle of last year(or at least publicly announced by the devs) was a small but really useful feature that was overlooked by me at the time thanks to the rapid evolutionary pace of Godot, it is a an optional way to yield the script for an amount of time.
@@ -45,7 +39,7 @@ There are basically two ways of doing it: You could either create the timer in t
 
 <body id="page">
 	
-	<header id="site-header" class="animated slideInUp faster">
+	<header id="site-header" class="animated slideInUp">
 		<div class="hdr-wrapper section-inner">
 			<div class="hdr-left">
 				<div class="site-branding">
@@ -76,46 +70,25 @@ There are basically two ways of doing it: You could either create the timer in t
 				<h1>Godot Engine Quick Tips - 01: create_timer() helper for yielding a script</h1>
 			</header>
 			<div class="content">
-				<p><a href="../images/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png"><img src="../images/thumbnails/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png" alt="" /></a></p>
-
+				<p><a href="../images/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png"><img src="../images/thumbnails/2017-02-14-godot-engine-quick-tips-01-create-timer-helper-for-yielding-a-script-featured_image.png" alt=""></a></p>
 <p>Implemented during the middle of last year(or at least publicly
 announced by the devs) was a small but really useful feature that was
 overlooked by me at the time thanks to the rapid evolutionary pace of
 Godot, it is a an optional way to yield the script for an amount of
 time.</p>
-
 <p>There are basically two ways of doing it: You could either create the
 timer in the editor and access it through code or you could create it
 all trough code at runtime as I did in the gist.</p>
-
 <p>It essentially makes the 5 lines of code go down to 1, which helps a lot
 in code organization.</p>
-
 <p>The only downside: It is <strong>not</strong> available on the stable branch yet(at
 the moment: 2.1.2) but you can get it on the 2.2-legacy branch or in the
 master branch of godot.</p>
-
 <p>See the gist, from line 5 to 14 I wrote the code using the default way,
 and from line 21 to 23 we see the same thing with the new
 create_timer() function:</p>
 
 			</div>
-
-<div class="related-posts thin">
-	<h2>See Also</h2>
-	<ul>
-	
-	<li><a href="/posts/2016-09-25-list-of-game-dev-resources/">List of game dev resources</a></li>
-	
-	<li><a href="/posts/2017-01-27-update-to-smrt-godot/">Update to SMRT-Godot</a></li>
-	
-	<li><a href="/posts/2016-11-12-a-game-with-code-and-graphics-under-48kb/">A game with code and graphics under 48kb</a></li>
-	
-	<li><a href="/posts/2016-12-19-to-bite-more-than-you-can-chew-another-ludum-dare-37-dev-story-of-missteps/">To bite more than you can chew: Another Ludum Dare 37 dev story of missteps</a></li>
-	
-	</ul>
-</div>
-
 			<hr class="post-end">
 			<footer class="post-info">
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>Bruno SXS Alves</p>
@@ -139,7 +112,7 @@ create_timer() function:</p>
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2019 <a href="https://brunosxs.com">BrunoSXS</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>&copy; 2021 <a href="https://brunosxs.com">BrunoSXS</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://brunosxs.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>
@@ -147,7 +120,7 @@ create_timer() function:</p>
 
 
 
-	<script src="https://brunosxs.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	<script src="https://brunosxs.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
 	
 <script type="application/javascript">
 var doNotTrack = false;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>plugin on BrunoSXS</title>
@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 06 Jun 2017 12:54:00 -0700</lastBuildDate>
-    
-	<atom:link href="https://brunosxs.com/tags/plugin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 06 Jun 2017 12:54:00 -0700</lastBuildDate><atom:link href="https://brunosxs.com/tags/plugin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using SMRT-Godot - The dialog system with a fancy name</title>
       <link>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</link>
@@ -20,8 +16,9 @@
       <guid>https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/</guid>
       <description>This post is long due, but I found some motivation after talking to Nathan(from GDQuest, featured in my list of gamedev resources).
 In here I&amp;rsquo;ll show a simple project to highlight some of the features of SMRT.
-Our basic scene
- You can find this project in SMRT&amp;rsquo;s examples folder at the project&amp;rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&amp;hellip;</description>
+ You can find this project in SMRT&amp;rsquo;s examples folder at the project&amp;rsquo;s github repository, download it and follow along.  Play the scene and interact with the characters before proceeding&amp;hellip;
+Done?
+Let&amp;rsquo;s just go over the basic concept of SMRT: chapters, dialogs and texts</description>
     </item>
     
     <item>
