@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cmake on BrunoSXS&#39; Cave</title>
+    <link>https://brunosxs.com/tags/cmake/</link>
+    <description>Recent content in cmake on BrunoSXS&#39; Cave</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 18 Apr 2021 13:23:21 -0200</lastBuildDate><atom:link href="https://brunosxs.com/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up raylib and raygui with cmake</title>
+      <link>https://brunosxs.com/posts/setting-up-raylib-raygui-with-cmake/</link>
+      <pubDate>Sun, 18 Apr 2021 13:23:21 -0200</pubDate>
+      
+      <guid>https://brunosxs.com/posts/setting-up-raylib-raygui-with-cmake/</guid>
+      <description>Hey there. Back from the dead to add some useful scaffold. Recently I&amp;rsquo;ve been making small prototypes in c/c++, and after playing lots with SDL, SFML and even OpenGL, I found out that Raylib is the best fun I had in doing those prototypes. Setting it up is straight-forward if you know cmake documentation, but who does, right? Well, that&amp;rsquo;s why I made this post. This is my script to build my small drawing program having raylib and raygui both as a dependency, in a subdirectory called thirdparty.</description>
+    </item>
+    
+  </channel>
+</rss>

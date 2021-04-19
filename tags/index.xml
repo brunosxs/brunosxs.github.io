@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate><atom:link href="https://brunosxs.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 13:23:21 -0200</lastBuildDate><atom:link href="https://brunosxs.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>c&#43;&#43;</title>
+      <link>https://brunosxs.com/tags/c&#43;&#43;/</link>
+      <pubDate>Sun, 18 Apr 2021 13:23:21 -0200</pubDate>
+      
+      <guid>https://brunosxs.com/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cmake</title>
+      <link>https://brunosxs.com/tags/cmake/</link>
+      <pubDate>Sun, 18 Apr 2021 13:23:21 -0200</pubDate>
+      
+      <guid>https://brunosxs.com/tags/cmake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raylib</title>
+      <link>https://brunosxs.com/tags/raylib/</link>
+      <pubDate>Sun, 18 Apr 2021 13:23:21 -0200</pubDate>
+      
+      <guid>https://brunosxs.com/tags/raylib/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>gamedev</title>
       <link>https://brunosxs.com/tags/gamedev/</link>
@@ -68,33 +95,6 @@
       <pubDate>Sat, 18 Feb 2017 10:49:00 -0800</pubDate>
       
       <guid>https://brunosxs.com/tags/tutorials/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SMRT</title>
-      <link>https://brunosxs.com/tags/smrt/</link>
-      <pubDate>Fri, 27 Jan 2017 02:47:00 -0800</pubDate>
-      
-      <guid>https://brunosxs.com/tags/smrt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>LDJAM</title>
-      <link>https://brunosxs.com/tags/ldjam/</link>
-      <pubDate>Mon, 19 Dec 2016 13:32:00 -0800</pubDate>
-      
-      <guid>https://brunosxs.com/tags/ldjam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>postmortem</title>
-      <link>https://brunosxs.com/tags/postmortem/</link>
-      <pubDate>Mon, 19 Dec 2016 13:32:00 -0800</pubDate>
-      
-      <guid>https://brunosxs.com/tags/postmortem/</guid>
       <description></description>
     </item>
     

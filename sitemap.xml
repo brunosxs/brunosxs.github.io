@@ -3,15 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://brunosxs.com/</loc>
-    <lastmod>2018-06-27T15:53:00-07:00</lastmod>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/tags/c&#43;&#43;/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/tags/cmake/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/posts/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/tags/raylib/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/posts/setting-up-raylib-raygui-with-cmake/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
+  </url><url>
+    <loc>https://brunosxs.com/tags/</loc>
+    <lastmod>2021-04-18T13:23:21-02:00</lastmod>
   </url><url>
     <loc>https://brunosxs.com/tags/gamedev/</loc>
     <lastmod>2018-06-27T15:53:00-07:00</lastmod>
   </url><url>
     <loc>https://brunosxs.com/tags/godot/</loc>
-    <lastmod>2018-06-27T15:53:00-07:00</lastmod>
-  </url><url>
-    <loc>https://brunosxs.com/posts/</loc>
     <lastmod>2018-06-27T15:53:00-07:00</lastmod>
   </url><url>
     <loc>https://brunosxs.com/tags/programming/</loc>
@@ -21,9 +36,6 @@
     <lastmod>2018-06-27T15:53:00-07:00</lastmod>
   </url><url>
     <loc>https://brunosxs.com/posts/2018-06-27-smrt-godot-legacy-and-the-future-of-smrt/</loc>
-    <lastmod>2018-06-27T15:53:00-07:00</lastmod>
-  </url><url>
-    <loc>https://brunosxs.com/tags/</loc>
     <lastmod>2018-06-27T15:53:00-07:00</lastmod>
   </url><url>
     <loc>https://brunosxs.com/tags/plugin/</loc>

@@ -6,8 +6,47 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 27 Jun 2018 15:53:00 -0700</lastBuildDate>
+		<lastBuildDate>Sun, 18 Apr 2021 13:23:21 -0200</lastBuildDate>
 		<atom:link href="https://brunosxs.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Setting up raylib and raygui with cmake</title>
+			<link>https://brunosxs.com/posts/setting-up-raylib-raygui-with-cmake/</link>
+			<pubDate>Sun, 18 Apr 2021 13:23:21 -0200</pubDate>
+			
+			<guid>https://brunosxs.com/posts/setting-up-raylib-raygui-with-cmake/</guid>
+			<description>Hey there. Back from the dead to add some useful scaffold. Recently I&amp;rsquo;ve been making small prototypes in c/c++, and after playing lots with SDL, SFML and even OpenGL, I found out that Raylib is the best fun I had in doing those prototypes. Setting it up is straight-forward if you know cmake documentation, but who does, right? Well, that&amp;rsquo;s why I made this post. This is my script to build my small drawing program having raylib and raygui both as a dependency, in a subdirectory called thirdparty.</description>
+			<content type="html"><![CDATA[<p>Hey there. Back from the dead to add some useful scaffold. Recently I&rsquo;ve been making small prototypes in c/c++, and after playing lots with SDL, SFML and even OpenGL, I found out that Raylib is the best fun I had in doing those prototypes. Setting it up is straight-forward if you know cmake documentation, but who does, right? Well, that&rsquo;s why I made this post.
+This is my script to build my small drawing program having raylib and raygui both as a dependency, in a subdirectory called thirdparty.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.5</span><span class="p">)</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">project</span><span class="p">(</span><span class="s">raylib_game</span> <span class="s">CXX</span><span class="p">)</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">11</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="s">ON</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_EXAMPLES</span> <span class="s">OFF</span> <span class="s">CACHE</span> <span class="s">BOOL</span> <span class="s2">&#34;&#34;</span> <span class="s">FORCE</span><span class="p">)</span> <span class="c"># don&#39;t build the supplied examples
+</span><span class="c"></span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">thirdparty/raylib</span> <span class="s">thirdparty/raylib/bin</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">BUILD_RAYGUI_EXAMPLES</span> <span class="s">OFF</span> <span class="s">CACHE</span> <span class="s">BOOL</span> <span class="s2">&#34;&#34;</span> <span class="s">FORCE</span><span class="p">)</span> <span class="c"># don&#39;t build raygui examples
+</span><span class="c"></span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">thirdparty/raygui/projects/CMake</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">SOURCES</span>
+    <span class="s">main.cpp</span>
+<span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="o">${</span><span class="nv">SOURCES</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">raylib</span> <span class="s">raygui</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">target_include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">PRIVATE</span> <span class="s">include/</span><span class="p">)</span><span class="err">
+</span><span class="err">
+</span></code></pre></div><p>It will presume raylib and raygui sources are both under <code>thirdparty/</code> Your files can reside anywhere in the project and you&rsquo;ll be able to include both <code>raylib.h</code> and <code>raygui.h</code> anywhere in the project tree withouth using relative paths. Have a look at <code>main.cpp</code> to see an example basically stracted directly from raygui examples.</p>
+<h2 id="building">Building:</h2>
+<ul>
+<li>Be sure to have <a href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux">all dependencies raylib requires to build itself with</a>.</li>
+<li>At the root of the project, just do:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make
+</code></pre></div><p>Happy coding ;)</p>
+<h3 id="footnotes">Footnotes:</h3>
+<p>The repository with this template <a href="https://github.com/brunosxs/raylib-raygui-cmake-template">can be found here</a>.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>SMRT-Godot Legacy and the future of SMRT</title>
