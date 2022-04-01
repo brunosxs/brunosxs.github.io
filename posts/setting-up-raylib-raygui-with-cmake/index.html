@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" integrity="sha384-IJLmUY0f1ePPX6uSCJ9Bxik64/meJmjSYD7dHaJqTXXEBE4y+Oe9P2KBZa/z7p0Q" crossorigin="anonymous">
+  <link href="https://brunosxs.com/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+ | Setting up raylib and raygui with cmake
+
+  </title>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19939128-1"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-19939128-1");
+  </script>
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;brunosxs.com"></a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts">
+            Posts
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;pt_BR&#x2F;posts">
+            Posts(BR)
+          </a>
+          
+          
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Setting up raylib and raygui with cmake
+          </h1>
+          <p class="subtitle"></p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>BrunoSXS published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-04-12T11:51:00-08:00">April 12, 2021</time></span>
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>2 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>248 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p>Hey there. Back from the dead to add some useful scaffold. Recently I’ve been making small prototypes in c/c++, and after playing lots with SDL, SFML and even OpenGL, I found out that Raylib is the best fun I had in doing those prototypes. Setting it up is straight-forward if you know cmake documentation, but who does, right? Well, that’s why I made this post. This is my script to build my small drawing program having raylib and raygui both as a dependency, in a subdirectory called thirdparty.</p>
+<pre data-lang="cmake" style="background-color:#2b303b;color:#c0c5ce;" class="language-cmake "><code class="language-cmake" data-lang="cmake"><span style="color:#96b5b4;">cmake_minimum_required</span><span>(</span><span style="color:#bf616a;">VERSION </span><span>3.5)
+</span><span>
+</span><span style="color:#96b5b4;">project</span><span>(raylib_game CXX)
+</span><span>
+</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#bf616a;">CMAKE_CXX_STANDARD </span><span>11)
+</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#bf616a;">CMAKE_CXX_STANDARD_REQUIRED </span><span>ON)
+</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#bf616a;">BUILD_EXAMPLES </span><span>OFF </span><span style="color:#bf616a;">CACHE </span><span style="color:#b48ead;">BOOL </span><span>&quot;&quot; </span><span style="color:#bf616a;">FORCE</span><span>) </span><span style="color:#65737e;"># don&#39;t build the supplied examples
+</span><span style="color:#96b5b4;">add_subdirectory</span><span>(thirdparty/raylib thirdparty/raylib/bin)
+</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#bf616a;">BUILD_RAYGUI_EXAMPLES </span><span>OFF </span><span style="color:#bf616a;">CACHE </span><span style="color:#b48ead;">BOOL </span><span>&quot;&quot; </span><span style="color:#bf616a;">FORCE</span><span>) </span><span style="color:#65737e;"># don&#39;t build raygui examples
+</span><span style="color:#96b5b4;">add_subdirectory</span><span>(thirdparty/raygui/projects/CMake)
+</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#bf616a;">SOURCES
+</span><span>    main.cpp
+</span><span>)
+</span><span style="color:#96b5b4;">add_executable</span><span>(${</span><span style="color:#bf616a;">PROJECT_NAME</span><span>} ${</span><span style="color:#bf616a;">SOURCES</span><span>})
+</span><span style="color:#96b5b4;">target_link_libraries</span><span>(${</span><span style="color:#bf616a;">PROJECT_NAME</span><span>} raylib raygui)
+</span><span style="color:#96b5b4;">target_include_directories</span><span>(${</span><span style="color:#bf616a;">PROJECT_NAME</span><span>} </span><span style="color:#bf616a;">PRIVATE </span><span>include/)
+</span><span>
+</span></code></pre>
+<p>It will presume raylib and raygui sources are both under thirdparty/ Your files can reside anywhere in the project and you’ll be able to include both raylib.h and raygui.h anywhere in the project tree withouth using relative paths. Have a look at main.cpp to see an example basically stracted directly from raygui examples.</p>
+<h2 id="building">Building:</h2>
+<p>Be sure to have all dependencies raylib requires to build itself with.
+At the root of the project, just do:</p>
+<p><code>mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make</code></p>
+<p>Happy coding ;)</p>
+<h3 id="footnotes">Footnotes:</h3>
+<p>The repository with this template can be found <a rel="noopener" target="_blank" href="https://github.com/brunosxs/raylib-raygui-cmake-template">here</a>.</p>
+
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2018-06-27-smrt-godot-legacy-and-the-future-of-smrt&#x2F;">
+              SMRT-Godot Legacy and the future of SMRT<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+            
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+
+  
+  
+  
+  
+  <script src="https://brunosxs.com/elasticlunr.min.js"></script>
+  <script src="https://brunosxs.com/search_index.en.js"></script><script src="https://brunosxs.com/js/site.js"></script>
+
+  
+
+
+
+
+
+  
+  
+</body>
+
+</html>

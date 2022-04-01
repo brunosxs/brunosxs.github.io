@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" integrity="sha384-IJLmUY0f1ePPX6uSCJ9Bxik64/meJmjSYD7dHaJqTXXEBE4y+Oe9P2KBZa/z7p0Q" crossorigin="anonymous">
+  <link href="https://brunosxs.com/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+ | Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling
+
+  </title>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19939128-1"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-19939128-1");
+  </script>
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;brunosxs.com"></a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts">
+            Posts
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;pt_BR&#x2F;posts">
+            Posts(BR)
+          </a>
+          
+          
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling
+          </h1>
+          <p class="subtitle"></p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>BrunoSXS published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2017-05-21T08:37:00.002-07:00">May 21, 2017</time></span>
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>414 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p>Now I share with you guys how I handle save files in games. It is a
+pretty simple script that... well, works.<br />
+Godot also has a <em>ConfigFile class</em> that can be used for it, but I
+preffer to work with dictionaries because my code ends simpler.</p>
+<p>With basically 3 variables<br />
+<em><strong>default_save</strong></em><br />
+<em><strong>current_save_game</strong></em><br />
+<em><strong>save_slot</strong></em></p>
+<p>The basic idea is: This file is a singleton and uses
+current_save_game to store the info we want to use in our game. At the
+start of the game, it tries to load the desired save file based on the
+save_slot. If it doesn't exist, it creates one with the contents of
+another var called default_save</p>
+<blockquote>
+<p>Created by BrunoSXS</p>
+<p>LICENSED UNDER MIT</p>
+</blockquote>
+<pre data-lang="gd" style="background-color:#2b303b;color:#c0c5ce;" class="language-gd "><code class="language-gd" data-lang="gd"><span style="color:#b48ead;">var </span><span style="color:#bf616a;">save_slot </span><span>= </span><span style="color:#d08770;">0 </span><span style="color:#65737e;"># Just like classic JRPs, change the slot to save in a different place
+</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">current_save_game </span><span style="color:#65737e;"># This is the contents of the save file, for now we just declare it
+</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">default_save </span><span>= {&quot;</span><span style="color:#a3be8c;">money</span><span>&quot;:</span><span style="color:#d08770;">0</span><span>,&quot;</span><span style="color:#a3be8c;">powers</span><span>&quot;:null} </span><span style="color:#65737e;"># The default save contents, if there is no save file to load, then, the current_save_game gets its contents from this variable and then creates a save file with it
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">_ready</span><span>():
+</span><span>	current_save_game = </span><span style="color:#bf616a;">load_game</span><span>(save_slot) </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">typeof</span><span>(</span><span style="color:#bf616a;">load_game</span><span>(save_slot)) == TYPE_DICTIONARY </span><span style="color:#b48ead;">else</span><span> default_save </span><span style="color:#65737e;"># This is the first loading, when the game starts.
+</span><span>
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">load_game</span><span>(</span><span style="color:#bf616a;">save_slot</span><span>): </span><span style="color:#65737e;"># I used the concept of save slots to handle multiple saves, use what suits you.
+</span><span>	</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">F </span><span>= File.</span><span style="color:#bf616a;">new</span><span>() </span><span style="color:#65737e;"># We initialize the File class
+</span><span>	</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">D </span><span>= Directory.</span><span style="color:#bf616a;">new</span><span>() </span><span style="color:#65737e;"># and the Directory class
+</span><span>	</span><span style="color:#b48ead;">if</span><span> D.</span><span style="color:#bf616a;">dir_exists</span><span>(&quot;</span><span style="color:#a3be8c;">user://save</span><span>&quot;): </span><span style="color:#65737e;"># Check if the folder &#39;save&#39; exists before moving on
+</span><span>		</span><span style="color:#b48ead;">if</span><span> F.</span><span style="color:#bf616a;">open</span><span>(</span><span style="color:#bf616a;">str</span><span>(&quot;</span><span style="color:#a3be8c;">user://save/</span><span>&quot;,save_slot,&quot;</span><span style="color:#a3be8c;">.save</span><span>&quot;), File.READ_WRITE) == OK: </span><span style="color:#65737e;"># If the opening of the save file returns OK
+</span><span>			</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">temp_d </span><span style="color:#65737e;"># we create a temporary var to hold the contents of the save file
+</span><span>			temp_d = F.</span><span style="color:#bf616a;">get_var</span><span>() </span><span style="color:#65737e;"># we get the contents of the save file and store it on TEMP_D
+</span><span>			</span><span style="color:#b48ead;">return</span><span> temp_d </span><span style="color:#65737e;"># we return it to do our thing
+</span><span>		</span><span style="color:#b48ead;">else</span><span>: </span><span style="color:#65737e;"># In case the opening of the save file doesn&#39;t give an OK, we create a save file
+</span><span>			</span><span style="color:#bf616a;">print</span><span>(&quot;</span><span style="color:#a3be8c;">save file doesn&#39;t exist, creating one</span><span>&quot;) 
+</span><span>			</span><span style="color:#bf616a;">save_game</span><span>(save_slot) 
+</span><span>	</span><span style="color:#b48ead;">else</span><span>: </span><span style="color:#65737e;"># If the folder doesn&#39;t exist, we create one...
+</span><span>		D.</span><span style="color:#bf616a;">make_dir</span><span>(&quot;</span><span style="color:#a3be8c;">user://save</span><span>&quot;)
+</span><span>		</span><span style="color:#bf616a;">save_game</span><span>(save_slot) </span><span style="color:#65737e;"># and we create the save file using the save_game function
+</span><span>
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">save_game</span><span>(</span><span style="color:#bf616a;">save_slot</span><span>): </span><span style="color:#65737e;"># This functions save the contents of current_save_game variable into a file 
+</span><span>	</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">F </span><span>= File.</span><span style="color:#bf616a;">new</span><span>()
+</span><span>	F.</span><span style="color:#bf616a;">open</span><span>(</span><span style="color:#bf616a;">str</span><span>(&quot;</span><span style="color:#a3be8c;">user://save/</span><span>&quot;,save_slot,&quot;</span><span style="color:#a3be8c;">.save</span><span>&quot;), File.READ_WRITE) </span><span style="color:#65737e;"># we open the file
+</span><span>	F.</span><span style="color:#bf616a;">store_var</span><span>(current_save_game) </span><span style="color:#65737e;"># then we store the contents of the var save inside it
+</span><span>	F.</span><span style="color:#bf616a;">close</span><span>() </span><span style="color:#65737e;"># and we gracefully close the file :)
+</span></code></pre>
+
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+          
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Using SMRT-Godot - The dialog system with a fancy name
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2017-02-18-signals-in-godot&#x2F;">
+              Signals in godot<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+            
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+
+  
+  
+  
+  
+  <script src="https://brunosxs.com/elasticlunr.min.js"></script>
+  <script src="https://brunosxs.com/search_index.en.js"></script><script src="https://brunosxs.com/js/site.js"></script>
+
+  
+
+
+
+
+
+  
+  
+</body>
+
+</html>

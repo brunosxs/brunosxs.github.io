@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://brunosxs.com/sitemap.xml
