@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://brunosxs.com/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+ | Making a home server
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19939128-1"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-19939128-1");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;brunosxs.com"></a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts">
+            Posts
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;pt_BR&#x2F;posts">
+            Posts(BR)
+          </a>
+          
+          
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Making a home server
+          </h1>
+          <p class="subtitle"></p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>BrunoSXS published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2023-06-21T18:12:00.003-08:00">June 21, 2023</time></span>
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>11 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>2053 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <h1 id="background">Background</h1>
+<p>I have been using a custom debian for almost 10 years to have a samba server and simple backup system using cron jobs that with time, started to do lots of other things. The setup is not really that complex or automated, but with time I am proud to say that I can have it working in a matter of an afternoon or a bit more of setting up, thanks to the sh scripts I created. 
+It has been working relativelly fine and giving me just <em>some</em> work to maintain, but when it does, it is really something <del>that puts me in deep pain and wastes a lot more time than I`d want, I HATE IT</del>.</p>
+<p>It is still much better than not having anything, but I´d like to make this more robust and reproducible. Living in Brazil limits my options and makes it <em>VERY</em> hard and expensive to buy good parts. I´d love to get myself a THREADRIPPER or an EPYC cpu, but I would pay 2.5 times the price. Yeah, living here is like a perpetual state of the GPU shortage we went through the pandemic, but for every gadget I´d like to get my hands on. This is the reason why I use consumer-grade parts, which in turn makes me have to do more maintenance than I would like.</p>
+<p>So, during the last server breakdown caused by using a cheap mini-pc as the server, I started talking to my friend <a rel="noopener" target="_blank" href="https://twitter.com/TMM2K">HP</a>, core godot contributor and <em>incidentally</em>, my boss at <a rel="noopener" target="_blank" href="https://prehensile-tales.com/">prehensile-tales</a> and they gave me the idea of just using containers for EVERYTHING, and with of course a more in-depth conversation they showed me that, provided I took time to set it up correctly, I could drastically reduce the downtime and work needed to maintain or reinstall everything. They also gave me clever tips for backup which I frankly would not have thought but were so simple to integrate and had such impact that I did it basically on the spot.</p>
+<p>Choosing the distro was simple, Fedora workstation has been my main OS for more than a year, god is my withness I even learned to like gnome thanks to that, which was something I haven´t touched since the bad days of gnome 3. Fedora had sane defaults on desktop so I decided to use fedora server for my server.</p>
+<p>What you will read here is the journalling of the process that started around April and frankly, has not finished to this day, but I´d like to leave a written registry for Bruno of the future and if this helps anyone in a similar situation, hey, that is great!</p>
+<h1 id="requirements-reasoning">Requirements &amp; Reasoning</h1>
+<p>Why do I have a server? 
+Why shouldn´t I have a server? It is a cool project, it can store my samples, recordings, old college assignments... it is my vault and a machine that works for me. But the non-tldr version is that it started because of cd rot on two of my favorite dreamcast games way back in 2003~4. From that point forward, I waste no time in having a private collection of my physical media... I take no time at all to rip in the most accurate way possible what I bought so I can have control of my things. Around the same time I started learning about compression algorithms, codecs and all of that jazz. Nowadays I have a good understanding and well, even before finishing high-school I had my simple debian DIY ATX server built as cheaply as possible and god only knows how my data survived throughout the years.
+Since 2014, my needs evolved a lot and, although I never went over 2TB of data, thanks to work I need to worry about resilience and backup strategies. I also started doing some automation in my home and I hate the fact that I depend on the cloud for that so that pushed me a bit more to start the project where I started.</p>
+<p>Having said that, here are the key points of my requirements:</p>
+<h3 id="everything-in-containers">EVERYTHING in containers</h3>
+<p>Stuff will break and nothing feels better than simply killing a container or completely cleaning the state of it and having a new working one in seconds.</p>
+<h3 id="no-dependency-on-cloud-services">No dependency on cloud services</h3>
+<p>I care about my privacy <del>that is why I use chrome</del> and I like to understand why and where my things are where they are. This is why I still buy dvds and blu-rays in 2023 and let me tell you, nothing beats having the phisical media of something you like that may or may not have gone the way of the dodo on that streaming service. I have a small collection of movies and series I have bought throughout the years that I`d like to move with me no matter the machine.</p>
+<h3 id="not-too-much-complexity-and-specialized-tools">Not too much complexity and specialized tools</h3>
+<p>I have already used portainer on my server but I have been in situations where I felt it limitting more than helpful. Where are the damn configs files of the tool? Where are the compose files I pasted in the webui to create my containers?  Why go through the initial setup and have to download and later upload a backup if needed? 
+I have also used webmin for years and there were lots of things on it that I never touched. It felt like killing a fly with an atomic bomb. 
+This is why, this project will prefer CLI over any gui (also because of automation). </p>
+<h3 id="use-the-tools-fedora-already-provides-and-try-to-keep-the-usage-of-external-tools-that-are-not-on-the-official-repos-to-a-minimum">Use the tools fedora already provides and try to keep the usage of external tools (that are not on the official repos) to a minimum</h3>
+<h3 id="virtualization">Virtualization</h3>
+<p>For quick deployment of systems both for work and for testing purposes. Last thing I was playing with during my free-time was nix and nixos on a laptop. It would be ideal to have it on a vm that I can access on my network instead of that only machine, saving snapshots and whatnot would benefit my learning process...</p>
+<h3 id="btrfs">BTRFS</h3>
+<p>I'm fairly used to BTRFS and can´t live without its snapshot feature. I´d like to keep using that.</p>
+<h3 id="efficient">Efficient</h3>
+<p>My old nas (an odroid H2+ sbc) used to take 24w while idling and 35w on average when I was doing stuff with it. I will go with more power for virtualization but as I will be using a fairly recent ryzen cpu, I expect to not even double that power consumption.</p>
+<h1 id="hardware">Hardware:</h1>
+<ul>
+<li>Gigabyte Aorus B450m</li>
+<li>Ryzen 5 5600G (later I do plan on switching for the GE variant for ECC support.)</li>
+<li>128GB of Kingstom Fury DDR4 @ 3200Mhz (non ECC)</li>
+<li>2x HP SSD EX900 1TB</li>
+<li>2x 8TB Seagate IronWolf NAS HDDs</li>
+</ul>
+<h1 id="where-i-started">Where I started</h1>
+<p>My idea is: </p>
+<ul>
+<li>The two 8TB HDDs will work on the built-in btrfs raid1 mode.</li>
+<li>The first of the two HP 1TB ssds will be for the root partition.</li>
+<li>The other 1TB ssd will be for the virtual machines, qcow2, containers and volumes.</li>
+</ul>
+<p>I will create btrfs subvolumes on the raid1 hdds to store the home partition, snapshots and the logs, this is all to help me on my backup strategy which will come later.</p>
+<table><thead><tr><th>NAME</th><th>MAJ:MIN</th><th>RM</th><th>SIZE</th><th>RO</th><th>TYPE</th><th>MOUNTPOINTS</th></tr></thead><tbody>
+<tr><td>sda</td><td>8:0</td><td>0</td><td>7.3T</td><td>0</td><td>disk</td><td></td></tr>
+<tr><td>└─sda1</td><td>8:1</td><td>0</td><td>7.3T</td><td>0</td><td>part</td><td>/mnt/data</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>/var/log</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>/.snapshots</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>/home</td></tr>
+<tr><td>sdb</td><td>8:16</td><td>0</td><td>7.3T</td><td>0</td><td>disk</td><td></td></tr>
+<tr><td>└─sdb1</td><td>8:17</td><td>0</td><td>7.3T</td><td>0</td><td>part</td><td></td></tr>
+<tr><td>nvme1n1</td><td>259:0</td><td>0</td><td>931.5G</td><td>0</td><td>disk</td><td></td></tr>
+<tr><td>├─nvme1n1p1</td><td>259:1</td><td>0</td><td>600M</td><td>0</td><td>part</td><td>/boot/efi</td></tr>
+<tr><td>├─nvme1n1p2</td><td>259:2</td><td>0</td><td>1G</td><td>0</td><td>part</td><td>/boot</td></tr>
+<tr><td>nvme0n1</td><td>259:4</td><td>0</td><td>953.9G</td><td>0</td><td>disk</td><td></td></tr>
+<tr><td>└─nvme1n1p3</td><td>259:3</td><td>0</td><td>929.9G</td><td>0</td><td>part</td><td>/</td></tr>
+<tr><td>└─nvme0n1p1</td><td>259:5</td><td>0</td><td>929.9G</td><td>0</td><td>part</td><td>/var/lib/containers/storage/overlay</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>/var/lib/containers</td></tr>
+</tbody></table>
+<p>How to achieve that? Frankly, it was not during installation... I actually did the most basic install of fedora workstation, the only thing I changed was making sure it used btrfs for everything. Later on the very first boot, through ssh I edited my fstab to properly mount those partitions the way I devised on this table. This table is actually the end result.</p>
+<h2 id="why-go-over-this-trouble">Why go over this trouble?</h2>
+<p>Because of snapshots! They are too good of a feature to not make use of. We need to separate the snapshot subvolume from the other subvolumes you want to backup. As the only thing I am interested is basically the home folder, this is the reason @snapshots and @home are siblins in the filesystem structure. With that, later I can use btrbk to make automated backups to an usb disk or another drive on one of the vacant hotswappable bays basically worry-free and unattended.</p>
+<h2 id="btrfs-raid1">BTRFS RAID1</h2>
+<p>BTRFS has allocation profiles for different RAID modes that you can use. Have a read <a rel="noopener" target="_blank" href="https://wiki.tnonline.net/w/Btrfs/Profiles">at this article</a> if you want to know more, what interests me is that it has some key benefits over hardware raid, including in-place conversion. Which is actually the reason why I decided to do RAID1 and not RAID5 as I only have two disks for that on this server. This is no problem as I have a NAS with a more robust setup which makes backups of the server every two days, but if I do plan on making this even better down the line, I have the option to convert my raid1 into raid5 on the spot.</p>
+<p>The syntax to create a RAID1 profile with your disks is very simple:</p>
+<p><code>mkfs.btrfs -mraid1 -draid1 /dev/sda1 /dev/sdb1 -L data</code></p>
+<p>Per man page, you need to specify the profile for the metadata and the data, do that with the <code>-m</code> and <code>-d</code> flag respectively. Follow those with the disks or partitions you wish to use for the raid and <code>-L</code> to specify the disk label.
+After that, you can mount any of the disks on your filesystem and use your raid-enabled filesystem.</p>
+<p>BTRFS has an awesome functionality, called subvolumes. For all effects and purposes they are directories, but they have the power to be mounted as partitions on fstab... this is not the technical talk of course. I suggest reading the awesome <a rel="noopener" target="_blank" href="https://wiki.archlinux.org/title/btrfs">BTRFS article on the arch wiki</a> which was what helped me on this.</p>
+<p>The fact that subvolumes can be used as partitions for mount is not a new thing of course, but I just used subvolumes exclusively for backups and never really touched this feature of the filesystem.</p>
+<p>I mounted the sda1 raid under /mnt/data so I could start creating the subvolumes and followed the <code>@</code> notation for the subvolumes on the root of /mnt/data by doing:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> btrfs subvolume create /mnt/data/@home
+</span><span style="color:#bf616a;">sudo</span><span> btrfs subvolume create /mnt/data/@snapshots
+</span><span style="color:#bf616a;">sudo</span><span> btrfs subvolume create /mnt/data/@var_log
+</span></code></pre>
+<p>Next I needed the UUID of the partition where I created those subvolumes, I can do that easily with blkid like so:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">[root@fedora-server]#</span><span> blkid /dev/sda1 
+</span><span style="color:#bf616a;">/dev/sda1:</span><span> UUID=&quot;</span><span style="color:#a3be8c;">68490e94-b2e6-4c7f-9cb2-d25bcb6f31d9</span><span>&quot; UUID_SUB=&quot;</span><span style="color:#a3be8c;">d5b6aa44-1632-4d10-86f9-9a9d01762cfe</span><span>&quot; BLOCK_SIZE=&quot;</span><span style="color:#a3be8c;">4096</span><span>&quot; TYPE=&quot;</span><span style="color:#a3be8c;">btrfs</span><span>&quot; PARTUUID=&quot;</span><span style="color:#a3be8c;">0f18c33d-b627-7742-8739-399abff3f4f7</span><span>&quot;
+</span></code></pre>
+<p>I also did the same for the partition responsible to store the containers and volumes.</p>
+<p>With that info, I manually edited my fstab to mount the subvolumes and set everything up correctly.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span>UUID=68490e94-b2e6-4c7f-9cb2-d25bcb6f31d9 /mnt/data               btrfs                       </span><span style="color:#d08770;">0 0
+</span><span>UUID=1cc8b713-e980-</span><span style="color:#d08770;">4017</span><span>-ae3e-9098d8ae97f4 /var/lib/containers     btrfs   subvol=var_lib_containers </span><span style="color:#d08770;">0 0
+</span><span>UUID=68490e94-b2e6-4c7f-9cb2-d25bcb6f31d9 /home			  btrfs   subvol=</span><span style="color:#b48ead;">@home</span><span>,compress=zstd:</span><span style="color:#d08770;">1 0 0
+</span><span>UUID=68490e94-b2e6-4c7f-9cb2-d25bcb6f31d9 /.snapshots		  btrfs   subvol=</span><span style="color:#b48ead;">@snapshots </span><span style="color:#d08770;">0 0
+</span><span>UUID=68490e94-b2e6-4c7f-9cb2-d25bcb6f31d9 /var/log		  btrfs   subvol=</span><span style="color:#b48ead;">@var_log</span><span>,compress=zstd:</span><span style="color:#d08770;">1 0 0
+</span><span>
+</span></code></pre>
+<p>As you can see, we put in fstab the UUID of the disk that contains the subvolume we want to mount adding the specific subvolume name to the mount option subvol. After editing the file, it is wise to do <code>systemctl daemon-reload</code> to update the systemd units that are generated from fstab. Just reboot and you should have a machine ready to do the real fun stuff. </p>
+<p>Later on I will configure my containers, vms and explain my strategy on its usage on my workflow.</p>
+
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;setting-up-raylib-raygui-with-cmake&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Setting up raylib and raygui with cmake
+            </a>
+          </div>
+           
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script src="https://brunosxs.com/elasticlunr.min.js"></script>
+  <script src="https://brunosxs.com/search_index.en.js"></script><script src="https://brunosxs.com/js/site.js"></script>
+
+  
+
+
+
+
+
+  
+  
+</body>
+
+</html>

@@ -28,8 +28,7 @@
   
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" integrity="sha384-IJLmUY0f1ePPX6uSCJ9Bxik64/meJmjSYD7dHaJqTXXEBE4y+Oe9P2KBZa/z7p0Q" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link href="https://brunosxs.com/deep-thought.css" rel="stylesheet" />
   
   
@@ -41,6 +40,7 @@
   </title>
 
   
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19939128-1"></script>
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
@@ -50,6 +50,7 @@
     gtag("js", new Date());
     gtag("config", "UA-19939128-1");
   </script>
+  
   
 
   
@@ -157,7 +158,7 @@ Nathan(from GDQuest, featured in my <a rel="noopener" target="_blank" href="http
 resources</a>).<br />
 In here I'll show a simple project to highlight some of the features of
 SMRT.</p>
-<p><img src="20170606_using_smrt.png" alt="Our basic scene" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606_using_smrt.png" alt="Our basic scene" /></p>
 <p><em>Our basic scene</em></p>
 <blockquote>
 <p>You can find this project in SMRT's examples folder at the project's
@@ -177,7 +178,7 @@ concept of chapters in a book: A new point in the story. So they can say
 different things, while keeping the same dialog names with just a change
 in chapter<br />
 We will focus basically on the code for the following:</p>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png" alt="This is the final scene tree" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name.png" alt="This is the final scene tree" /></p>
 <p><em>This is the final scene tree</em></p>
 <ul>
 <li><strong>World:</strong> It will be very simple, just setting the initial
@@ -209,11 +210,11 @@ SMRT also needs a language file, it is a JSON that has info on how it
 should display messages.</p>
 <p>I created an editor for this process, access it by clicking on the
 following button:</p>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png" alt="Click on SMRT-Editor" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-button.png" alt="Click on SMRT-Editor" /></p>
 <p><em>Click on SMRT-Editor</em></p>
 <p>Use the load button and navigate to <em>res://examples/cave</em> to
 load <em>another_example.lan</em><br />
-<img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png" alt="Click on SMRT-Editor" /></p>
+<img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-04.png" alt="Click on SMRT-Editor" /></p>
 <p>Click in a chapter to display all available dialogs in the dialog's
 viewer, then click in one of the texts to edit its properties. For
 actions, you can add, duplicate, edit and delete chapters and dialogs
@@ -223,14 +224,14 @@ with the arrows bellow the text field.</p>
 something you didn't meant to, providing you haven't saved it yet, just
 load the file again.</p>
 <p><strong>The transition</strong></p>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif" alt="Transition effect" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-05.gif" alt="Transition effect" /></p>
 <h4 id="it-s-setup">It's setup:</h4>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png" alt="Setup" /></p>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png" alt="Setup" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-06.png" alt="Setup" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-07.png" alt="Setup" /></p>
 <p>It is a texture of 64x64 pixels that covers the entire viewport, with
 two keyframes for opacity: It starts at 0 and ends at 1.</p>
 <h4 id="the-world">The world</h4>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png" alt="The World" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-08.png" alt="The World" /></p>
 <p>The most important line is the forth one. On it, we create a global
 variable called 'chapter' with the value 'intro'. </p>
 <p>In the script for the npcs this value will be used and changed as
@@ -238,7 +239,7 @@ desired.</p>
 <p>Lines 5 and 6 are basically SMRT and a fade transition node
 respectively.</p>
 <h2 id="the-player">The player</h2>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png" alt="The Player" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-09.png" alt="The Player" /></p>
 <p>Just simple movement, our player class will be passive, it will not have
 the methods to interact with objects by itself, this will be the work of
 the NPC node.</p>
@@ -267,7 +268,7 @@ player for our NPCs.</p>
 </span><span>	</span><span style="color:#bf616a;">move</span><span>(direction*walk_speed*delta)
 </span></code></pre>
 <h2 id="the-npc">The NPC</h2>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png" alt="The NPC" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-10.png" alt="The NPC" /></p>
 <p>It is a duplicate of the player char  with an Area2D for the interactive
 area.</p>
 <pre data-lang="gd" style="background-color:#2b303b;color:#c0c5ce;" class="language-gd "><code class="language-gd" data-lang="gd"><span style="color:#b48ead;">extends</span><span style="color:#a3be8c;"> KinematicBody2D
@@ -362,7 +363,7 @@ player gave in a question.</p>
 connected. If it isn't, we connect it to the npc's function
 *on_dialog. *</p>
 <blockquote>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png" alt="friend_talk is the first npc's dialog" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-11.png" alt="friend_talk is the first npc's dialog" /></p>
 <p>friend_talk is the first npc's dialog, the one blocking the exit of the cave</p>
 </blockquote>
 <p>Then, through lines 44 and 45 we check if we're in the &quot;intro&quot; chapter
@@ -384,7 +385,7 @@ will fade to black while the dialog continues. At the end of it, we
 change the chapter global to &quot;<em>after_going_there&quot;</em> and life goes on.</p>
 <h2 id="the-second-npc">The second NPC</h2>
 <blockquote>
-<p><img src="20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png" alt="friend_talk is the first npc's dialog" /></p>
+<p><img src="https://brunosxs.com/posts/2017-06-06-using-smrt-godot-the-dialog-system-with-a-fancy-name/20170606-using-smrt-godot-the-dialog-system-with-a-fancy-name-12.png" alt="friend_talk is the first npc's dialog" /></p>
 </blockquote>
 <p>This one just illustrates the usefulness of the chapter &gt; dialog
 paradigm.  This npc will start the dialog &quot;<em>that_guy_talk&quot;.</em> In the
@@ -438,24 +439,24 @@ in my doubts. In a way, it is me continuing the cycle.</p>
     <div class="columns is-centered">
       <div class="column is-8">
         <nav class="level">
-          
+              
           <div class="level-item has-text-centered">
-            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2018-06-27-smrt-godot-legacy-and-the-future-of-smrt&#x2F;">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling&#x2F;">
               <span class="icon mr-2">
                 <i class="fas fa-arrow-circle-left"></i>
               </span>
-              SMRT-Godot Legacy and the future of SMRT
+              Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling
             </a>
           </div>
            
           <div class="level-item has-text-centered">
-            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2017-05-21-godot-engine-quick-tips-02-simple-save-and-load-methods-for-godot-engine-with-dir-and-file-handling&#x2F;">
-              Godot Engine Quick Tips - 02: Simple save and load methods for godot engine with dir and file handling<span class="icon ml-2">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;brunosxs.com&#x2F;posts&#x2F;2018-06-27-smrt-godot-legacy-and-the-future-of-smrt&#x2F;">
+              SMRT-Godot Legacy and the future of SMRT<span class="icon ml-2">
                 <i class="fas fa-arrow-circle-right"></i>
               </span>
             </a>
           </div>
-            
+          
         </nav>
       </div>
     </div>
@@ -468,6 +469,7 @@ in my doubts. In a way, it is me continuing the cycle.</p>
 
 
 
+  
   <footer class="footer py-4">
     <div class="content has-text-centered">
       <p>
@@ -497,6 +499,7 @@ in my doubts. In a way, it is me continuing the cycle.</p>
       </p>
     </div>
   </footer>
+  
 
   
   
